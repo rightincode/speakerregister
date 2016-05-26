@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Angular 2 QuickStart</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="libs/css/bootstrap.css">
+
+    <!-- 1. Load libraries -->
+    <script src="libs/jquery.min.js"></script>
+    <script src="libs/bootstrap.min.js"></script>
+    <script src="libs/zone.js"></script>
+    <script src="libs/Reflect.js"></script>
+    <script src="libs/system.src.js"></script>
+
+    <!-- Polyfill(s) for older browsers -->
+    <script src="libs/es6-shim.min.js"></script>
+    
+    <!-- 2. Configure SystemJS -->
+    <script src="scripts/systemjs.config.js"></script>
+    <script>
+      System.import('app').catch(function(err){ console.error(err); });
+    </script>
+</head>
+<body>
+<h1>Hello world from ASP.NET Core RC2 on .NET Core RC2!</h1>
+    <br/><br/>
+    <my-app>Loading...</my-app>
+</body>
+</html>
