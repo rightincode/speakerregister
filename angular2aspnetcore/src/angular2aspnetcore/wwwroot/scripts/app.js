@@ -15,7 +15,7 @@ var AppComponent = (function () {
     AppComponent = __decorate([
         core_1.Component({
             selector: 'my-app',
-            template: '<h3>Angular 2 is running here!</h3>'
+            template: '<h3>Angular 2.rc4 is running here!</h3>'
         }), 
         __metadata('design:paramtypes', [])
     ], AppComponent);
