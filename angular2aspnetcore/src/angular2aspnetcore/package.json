@@ -1,6 +1,7 @@
 {
   "version": "1.0.0",
   "name": "speakerregister",
+  "author": "Richard L. Taylor Jr.",
   "scripts": {
     "postinstall": "typings install",
     "typings": "typings"
