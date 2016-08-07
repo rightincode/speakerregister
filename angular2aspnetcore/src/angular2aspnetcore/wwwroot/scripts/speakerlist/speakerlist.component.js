@@ -9,19 +9,16 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var router_1 = require('@angular/router');
-var AppComponent = (function () {
-    function AppComponent() {
+var SpeakerListComponent = (function () {
+    function SpeakerListComponent() {
     }
-    AppComponent = __decorate([
+    SpeakerListComponent = __decorate([
         core_1.Component({
-            selector: 'my-app',
-            templateUrl: '../app.component.html',
-            directives: [router_1.ROUTER_DIRECTIVES]
+            template: '<h3>Speaker List Page </h3>'
         }), 
         __metadata('design:paramtypes', [])
-    ], AppComponent);
-    return AppComponent;
+    ], SpeakerListComponent);
+    return SpeakerListComponent;
 }());
-exports.AppComponent = AppComponent;
-//# sourceMappingURL=app.component.js.map
+exports.SpeakerListComponent = SpeakerListComponent;
+//# sourceMappingURL=speakerlist.component.js.map

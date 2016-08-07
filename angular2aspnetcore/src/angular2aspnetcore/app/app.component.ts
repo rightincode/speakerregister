@@ -1,8 +1,12 @@
 ﻿import { Component } from '@angular/core';
+import { ROUTER_DIRECTIVES } from '@angular/router';
 
 @Component({
     selector: 'my-app',
-    template: '<h3>Angular 2 RC4 is running here!</h3>'
+    templateUrl: '../app.component.html',
+    directives: [ROUTER_DIRECTIVES]
 })
 
-export class AppComponent { }
+export class AppComponent {
+
+}
