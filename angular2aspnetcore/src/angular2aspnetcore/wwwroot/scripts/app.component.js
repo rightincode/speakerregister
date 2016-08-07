@@ -10,6 +10,9 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
+var speakerregisterhome_component_1 = require('./home/speakerregisterhome.component');
+var speakerlist_component_1 = require('./speakerlist/speakerlist.component');
+var pagenotfound_component_1 = require('./pagenotfound.component');
 var AppComponent = (function () {
     function AppComponent() {
     }
@@ -17,7 +20,8 @@ var AppComponent = (function () {
         core_1.Component({
             selector: 'my-app',
             templateUrl: '../app.component.html',
-            directives: [router_1.ROUTER_DIRECTIVES]
+            directives: [router_1.ROUTER_DIRECTIVES],
+            precompile: [speakerregisterhome_component_1.SpeakerRegisterHomeComponent, speakerlist_component_1.SpeakerListComponent, pagenotfound_component_1.PageNotFoundComponent]
         }), 
         __metadata('design:paramtypes', [])
     ], AppComponent);

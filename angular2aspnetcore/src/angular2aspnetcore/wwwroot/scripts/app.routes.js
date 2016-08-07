@@ -4,6 +4,7 @@ var speakerregisterhome_component_1 = require('./home/speakerregisterhome.compon
 var speakerlist_component_1 = require('./speakerlist/speakerlist.component');
 var pagenotfound_component_1 = require('./pagenotfound.component');
 var routes = [
+    { path: '', component: speakerregisterhome_component_1.SpeakerRegisterHomeComponent },
     { path: 'home', component: speakerregisterhome_component_1.SpeakerRegisterHomeComponent },
     { path: 'speaker-list', component: speakerlist_component_1.SpeakerListComponent },
     { path: '**', component: pagenotfound_component_1.PageNotFoundComponent }
