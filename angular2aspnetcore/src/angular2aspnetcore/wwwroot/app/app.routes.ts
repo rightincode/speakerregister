@@ -1,4 +1,4 @@
-﻿import { provideRouter, RouterConfig } from '@angular/router';
+import { provideRouter, RouterConfig } from '@angular/router';
 import { SpeakerRegisterHomeComponent } from './home/speakerregisterhome.component';
 import { SpeakerListComponent } from './speakerlist/speakerlist.component';
 import { PageNotFoundComponent } from './pagenotfound.component';

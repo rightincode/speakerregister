@@ -1,0 +1,24 @@
+{
+  "data": [
+    {
+      "firstName": "Richard",
+      "lastName": "Taylor",
+      "emailAddress": "rtaylor@rightincode.com",
+      "phoneNumber": "704-555-1212",
+      "address1": "1234 Main Street",
+      "address2": "Building #2",
+      "state": "NC",
+      "zipcode": "28078"
+    },
+    {
+      "firstName": "Shondrecca",
+      "lastName": "Taylor",
+      "emailAddress": "staylor@rightincode.com",
+      "phoneNumber": "704-555-2424",
+      "address1": "1234 Main Street",
+      "address2": "Building #2",
+      "state": "NC",
+      "zipcode": "28078"
+    }
+  ]
+}

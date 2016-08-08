@@ -9,14 +9,24 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var speaker_service_1 = require('../services/speaker.service');
 var SpeakerListComponent = (function () {
-    function SpeakerListComponent() {
+    function SpeakerListComponent(speakerService) {
+        this.speakerService = speakerService;
     }
+    SpeakerListComponent.prototype.ngOnInit = function () {
+        this.getSpeakers();
+    };
+    SpeakerListComponent.prototype.getSpeakers = function () {
+        var _this = this;
+        this.speakerService.getSpeakers()
+            .subscribe(function (speakers) { return _this.speakers = speakers; }, function (error) { return _this.errorMessage = error; });
+    };
     SpeakerListComponent = __decorate([
         core_1.Component({
             template: '<h3>Speaker List Page </h3>'
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [speaker_service_1.SpeakerService])
     ], SpeakerListComponent);
     return SpeakerListComponent;
 }());

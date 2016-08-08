@@ -1,4 +1,4 @@
-﻿/// <binding AfterBuild='clearDestinationFolder, moveToLibs' />
+﻿/// <binding AfterBuild='clearLibsDestinationFolder, clearAppDestinationFolder, moveToLibs' />
 /*
 This file in the main entry point for defining Gulp tasks and using Gulp plugins.
 Click here to learn more. http://go.microsoft.com/fwlink/?LinkId=518007
@@ -7,12 +7,19 @@ Click here to learn more. http://go.microsoft.com/fwlink/?LinkId=518007
 var gulp = require('gulp');
 var clean = require('gulp-clean');
 
-var destPath = './wwwroot/libs/';
+var libsDestPath = './wwwroot/libs/';
+var appDestPath = './wwwroot/app/';
 
-//clear destination folder
-gulp.task('clearDestinationFolder',
+//clear destination folders
+gulp.task('clearLibsDestinationFolder',
     function() {
-        return gulp.src(destPath)
+        return gulp.src(libsDestPath)
+            .pipe(clean());
+    });
+
+gulp.task('clearAppDestinationFolder',
+    function () {
+        return gulp.src(appDestPath)
             .pipe(clean());
     });
 
@@ -42,4 +49,7 @@ gulp.task('moveToLibs', function (done) {
     gulp.src([
       'node_modules/bootstrap/dist/css/bootstrap.css'
     ]).pipe(gulp.dest('./wwwroot/libs/css'));
+
+    //copy typescript files for debugging purposes
+    gulp.src(['app/**/*']).pipe(gulp.dest('./wwwroot/app'));
 });

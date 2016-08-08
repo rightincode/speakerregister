@@ -1,4 +1,4 @@
-﻿import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Speaker } from '../models/speaker';
 import { SpeakerService } from '../services/speaker.service';
 
