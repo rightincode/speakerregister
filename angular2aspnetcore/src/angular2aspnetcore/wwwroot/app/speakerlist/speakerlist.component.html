@@ -1,0 +1,18 @@
+<table class="table table-hover">
+    <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email Address</th>
+        <th>Phone Number</th>
+        <th>City</th>
+        <th>State</th>
+    </tr>
+    <tr *ngFor="let speaker of speakers">
+        <td>{{ speaker.firstName }}</td>
+        <td>{{ speaker.lastName }}</td>
+        <td>{{ speaker.emailAddress }}</td>
+        <td>{{ speaker.phoneNumber }}</td>
+        <td>{{ speaker.city }}</td>
+        <td>{{ speaker.state }}</td>
+    </tr>
+</table>

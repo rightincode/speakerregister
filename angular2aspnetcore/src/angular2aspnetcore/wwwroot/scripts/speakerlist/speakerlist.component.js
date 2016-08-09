@@ -24,7 +24,7 @@ var SpeakerListComponent = (function () {
     };
     SpeakerListComponent = __decorate([
         core_1.Component({
-            template: '<h3>Speaker List Page </h3>'
+            templateUrl: '../../app/speakerlist/speakerlist.component.html'
         }), 
         __metadata('design:paramtypes', [speaker_service_1.SpeakerService])
     ], SpeakerListComponent);

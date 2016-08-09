@@ -3,7 +3,7 @@ import { Speaker } from '../models/speaker';
 import { SpeakerService } from '../services/speaker.service';
 
 @Component({
-    template: '<h3>Speaker List Page </h3>'
+    templateUrl: '../../app/speakerlist/speakerlist.component.html'
 })
 
 export class SpeakerListComponent implements OnInit {
