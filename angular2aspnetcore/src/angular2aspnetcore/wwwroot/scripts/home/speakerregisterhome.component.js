@@ -14,7 +14,7 @@ var SpeakerRegisterHomeComponent = (function () {
     }
     SpeakerRegisterHomeComponent = __decorate([
         core_1.Component({
-            template: '<h3>Speaker Register Home Page</h3>'
+            templateUrl: '../../app/home/speakerregisterhome.component.html'
         }), 
         __metadata('design:paramtypes', [])
     ], SpeakerRegisterHomeComponent);
