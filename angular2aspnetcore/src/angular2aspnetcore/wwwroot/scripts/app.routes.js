@@ -1,7 +1,7 @@
 "use strict";
 var router_1 = require('@angular/router');
 var speakerregisterhome_component_1 = require('./home/speakerregisterhome.component');
-var speakerlist_component_1 = require('./speakerlist/speakerlist.component');
+var speakerlist_component_1 = require('./speaker/speakerlist.component');
 var pagenotfound_component_1 = require('./pagenotfound.component');
 var routes = [
     { path: '', component: speakerregisterhome_component_1.SpeakerRegisterHomeComponent },

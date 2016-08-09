@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+﻿import { Component, OnInit } from '@angular/core';
 import { Speaker } from '../models/speaker';
 import { SpeakerService } from '../services/speaker.service';
 
 @Component({
-    templateUrl: '../../app/speakerlist/speakerlist.component.html'
+    templateUrl: '../../app/speaker/speakerlist.component.html'
 })
 
 export class SpeakerListComponent implements OnInit {

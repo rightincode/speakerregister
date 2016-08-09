@@ -1,6 +1,6 @@
 import { provideRouter, RouterConfig } from '@angular/router';
 import { SpeakerRegisterHomeComponent } from './home/speakerregisterhome.component';
-import { SpeakerListComponent } from './speakerlist/speakerlist.component';
+import { SpeakerListComponent } from './speaker/speakerlist.component';
 import { PageNotFoundComponent } from './pagenotfound.component';
 
 const routes: RouterConfig = [
