@@ -10,13 +10,24 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var http_1 = require('@angular/http');
+var speaker_1 = require('../models/speaker');
 var Observable_1 = require('rxjs/Observable');
 var SpeakerService = (function () {
     function SpeakerService(http) {
+        var _this = this;
         this.http = http;
         this.speakersUrl = 'app/testdata/speakers.json'; // URL to web API
+        this.loadSpeakers()
+            .subscribe(function (speakers) { return _this.speakers = speakers; }, function (error) { return _this.errorMessage = error; });
     }
     SpeakerService.prototype.getSpeakers = function () {
+        return this.speakers;
+    };
+    SpeakerService.prototype.getSpeakerById = function (id) {
+        var foundSpeaker = this.speakers.find(function (speaker) { return speaker.id === id; });
+        return foundSpeaker ? foundSpeaker : new speaker_1.Speaker();
+    };
+    SpeakerService.prototype.loadSpeakers = function () {
         return this.http.get(this.speakersUrl)
             .map(this.extractData)
             .catch(this.handleError);

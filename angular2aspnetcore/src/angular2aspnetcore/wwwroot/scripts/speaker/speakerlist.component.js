@@ -9,24 +9,27 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var router_1 = require('@angular/router');
 var speaker_service_1 = require('../services/speaker.service');
 var SpeakerListComponent = (function () {
-    function SpeakerListComponent(speakerService) {
+    function SpeakerListComponent(speakerService, router) {
         this.speakerService = speakerService;
+        this.router = router;
     }
     SpeakerListComponent.prototype.ngOnInit = function () {
         this.getSpeakers();
     };
+    SpeakerListComponent.prototype.onSelect = function (speaker) {
+        this.router.navigate(['/speakerdetail', speaker.id]);
+    };
     SpeakerListComponent.prototype.getSpeakers = function () {
-        var _this = this;
-        this.speakerService.getSpeakers()
-            .subscribe(function (speakers) { return _this.speakers = speakers; }, function (error) { return _this.errorMessage = error; });
+        this.speakers = this.speakerService.getSpeakers();
     };
     SpeakerListComponent = __decorate([
         core_1.Component({
             templateUrl: '../../app/speaker/speakerlist.component.html'
         }), 
-        __metadata('design:paramtypes', [speaker_service_1.SpeakerService])
+        __metadata('design:paramtypes', [speaker_service_1.SpeakerService, router_1.Router])
     ], SpeakerListComponent);
     return SpeakerListComponent;
 }());

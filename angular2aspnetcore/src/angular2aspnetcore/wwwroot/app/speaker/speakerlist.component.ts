@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
 import { Speaker } from '../models/speaker';
 import { SpeakerService } from '../services/speaker.service';
 
@@ -11,18 +13,20 @@ export class SpeakerListComponent implements OnInit {
     errorMessage: string;
     speakers: Speaker[];
 
-    constructor(private speakerService: SpeakerService) {
+    constructor(private speakerService: SpeakerService,
+                private router: Router) {
     }
     
     ngOnInit() {
         this.getSpeakers();
     }
 
+    onSelect(speaker: Speaker) {
+        this.router.navigate(['/speakerdetail', speaker.id]);
+    }
+
     getSpeakers() {
-        this.speakerService.getSpeakers()
-            .subscribe(
-            speakers => this.speakers = speakers,
-            error => this.errorMessage = <any>error);
+        this.speakers = this.speakerService.getSpeakers();
     }
 
     //addHero(name: string) {

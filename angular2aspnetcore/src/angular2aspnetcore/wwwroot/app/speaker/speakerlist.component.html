@@ -1,5 +1,6 @@
 <table class="table table-hover">
     <tr>
+        <th>Id</th>
         <th>First Name</th>
         <th>Last Name</th>
         <th>Email Address</th>
@@ -7,7 +8,9 @@
         <th>City</th>
         <th>State</th>
     </tr>
-    <tr *ngFor="let speaker of speakers">
+    <tr *ngFor="let speaker of speakers"
+        (click)="onSelect(speaker)">
+        <td>{{ speaker.id }}</td>
         <td>{{ speaker.firstName }}</td>
         <td>{{ speaker.lastName }}</td>
         <td>{{ speaker.emailAddress }}</td>

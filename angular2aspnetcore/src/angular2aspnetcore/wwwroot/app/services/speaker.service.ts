@@ -7,12 +7,30 @@ import { Observable }     from 'rxjs/Observable';
 
 export class SpeakerService {
 
+    private speakersUrl = 'app/testdata/speakers.json';  // URL to web API
+    private speakers: Speaker[];
+
+    errorMessage: string;
+
     constructor(private http: Http) {
+        this.loadSpeakers()
+            .subscribe(
+            speakers => this.speakers = speakers,
+            error => this.errorMessage = <any>error);
     }
 
-    private speakersUrl = 'app/testdata/speakers.json';  // URL to web API
+    getSpeakers(): Speaker[] {
+        return this.speakers;
+    }
 
-    getSpeakers(): Observable<Speaker[]> {
+    getSpeakerById(id): Speaker {
+
+        let foundSpeaker: Speaker = this.speakers.find((speaker) => speaker.id === id);
+
+        return foundSpeaker ? foundSpeaker : new Speaker();
+    }
+
+    private loadSpeakers(): Observable<Speaker[]> {
         return this.http.get(this.speakersUrl)
             .map(this.extractData)
             .catch(this.handleError);
