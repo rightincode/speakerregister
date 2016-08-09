@@ -23,13 +23,15 @@ export class SpeakerDetailComponent implements OnInit, OnDestroy {
 
     ngOnInit() {
         this.sub = this.route.params.subscribe(params => {
-            let currentSpeakerId = +params['id'];
+            this.currentSpeakerId = +params['id'];
 
-            if (currentSpeakerId <= 0) {
+            if (this.currentSpeakerId <= 0) {
+                this.currentSpeaker = new Speaker();
+                this.currentSpeaker.id = this.currentSpeakerId;
                 this.saveBtnText = 'Save';
             } else {
                 this.saveBtnText = 'Update';
-                this.loadSpeaker(currentSpeakerId);    
+                this.loadSpeaker(this.currentSpeakerId);    
             }
         });
     }

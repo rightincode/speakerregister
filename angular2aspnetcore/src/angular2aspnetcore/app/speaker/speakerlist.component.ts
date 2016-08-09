@@ -18,18 +18,18 @@ export class SpeakerListComponent implements OnInit {
     }
     
     ngOnInit() {
-        this.getSpeakers();
+        this.onGetSpeakers();
     }
 
     onSelect(speaker: Speaker) {
         this.router.navigate(['/speakerdetail', speaker.id]);
     }
 
-    getSpeakers() {
+    onGetSpeakers() {
         this.speakers = this.speakerService.getSpeakers();
     }
 
-    addSpeaker() {
+    onAddSpeaker() {
         this.router.navigate(['/speakerdetail', 0]);
     }
 }

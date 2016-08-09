@@ -17,15 +17,15 @@ var SpeakerListComponent = (function () {
         this.router = router;
     }
     SpeakerListComponent.prototype.ngOnInit = function () {
-        this.getSpeakers();
+        this.onGetSpeakers();
     };
     SpeakerListComponent.prototype.onSelect = function (speaker) {
         this.router.navigate(['/speakerdetail', speaker.id]);
     };
-    SpeakerListComponent.prototype.getSpeakers = function () {
+    SpeakerListComponent.prototype.onGetSpeakers = function () {
         this.speakers = this.speakerService.getSpeakers();
     };
-    SpeakerListComponent.prototype.addSpeaker = function () {
+    SpeakerListComponent.prototype.onAddSpeaker = function () {
         this.router.navigate(['/speakerdetail', 0]);
     };
     SpeakerListComponent = __decorate([

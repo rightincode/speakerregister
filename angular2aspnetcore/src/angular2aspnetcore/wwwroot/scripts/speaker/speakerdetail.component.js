@@ -10,6 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var router_1 = require('@angular/router');
+var speaker_1 = require('../models/speaker');
 var speaker_service_1 = require('../services/speaker.service');
 var SpeakerDetailComponent = (function () {
     function SpeakerDetailComponent(route, router, speakerService) {
@@ -20,13 +21,15 @@ var SpeakerDetailComponent = (function () {
     SpeakerDetailComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.sub = this.route.params.subscribe(function (params) {
-            var currentSpeakerId = +params['id'];
-            if (currentSpeakerId <= 0) {
+            _this.currentSpeakerId = +params['id'];
+            if (_this.currentSpeakerId <= 0) {
+                _this.currentSpeaker = new speaker_1.Speaker();
+                _this.currentSpeaker.id = _this.currentSpeakerId;
                 _this.saveBtnText = 'Save';
             }
             else {
                 _this.saveBtnText = 'Update';
-                _this.loadSpeaker(currentSpeakerId);
+                _this.loadSpeaker(_this.currentSpeakerId);
             }
         });
     };
