@@ -14,6 +14,7 @@ export class SpeakerDetailComponent implements OnInit, OnDestroy {
 
     currentSpeakerId: number;
     currentSpeaker: Speaker;
+    saveBtnText: string;
 
     constructor(private route: ActivatedRoute,
         private router: Router,
@@ -23,7 +24,13 @@ export class SpeakerDetailComponent implements OnInit, OnDestroy {
     ngOnInit() {
         this.sub = this.route.params.subscribe(params => {
             let currentSpeakerId = +params['id'];
-            this.loadSpeaker(currentSpeakerId);
+
+            if (currentSpeakerId <= 0) {
+                this.saveBtnText = 'Save';
+            } else {
+                this.saveBtnText = 'Update';
+                this.loadSpeaker(currentSpeakerId);    
+            }
         });
     }
 
@@ -33,6 +40,11 @@ export class SpeakerDetailComponent implements OnInit, OnDestroy {
 
     loadSpeaker(currentSpeakerId: number) {
         this.currentSpeaker = this.speakerService.getSpeakerById(currentSpeakerId);
+    }
+
+    updateSpeaker(currentSpeaker: Speaker) {
+        this.speakerService.saveSpeaker(currentSpeaker);
+        this.gotoSpeakers();
     }
 
     gotoSpeakers() {

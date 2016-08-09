@@ -25,6 +25,9 @@ var SpeakerListComponent = (function () {
     SpeakerListComponent.prototype.getSpeakers = function () {
         this.speakers = this.speakerService.getSpeakers();
     };
+    SpeakerListComponent.prototype.addSpeaker = function () {
+        this.router.navigate(['/speakerdetail', 0]);
+    };
     SpeakerListComponent = __decorate([
         core_1.Component({
             templateUrl: '../../app/speaker/speakerlist.component.html'

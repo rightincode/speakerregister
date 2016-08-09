@@ -10,8 +10,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var http_1 = require('@angular/http');
-var speaker_1 = require('../models/speaker');
 var Observable_1 = require('rxjs/Observable');
+var speaker_1 = require('../models/speaker');
 var SpeakerService = (function () {
     function SpeakerService(http) {
         var _this = this;
@@ -26,6 +26,22 @@ var SpeakerService = (function () {
     SpeakerService.prototype.getSpeakerById = function (id) {
         var foundSpeaker = this.speakers.find(function (speaker) { return speaker.id === id; });
         return foundSpeaker ? foundSpeaker : new speaker_1.Speaker();
+    };
+    SpeakerService.prototype.saveSpeaker = function (currentSpeaker) {
+        if (currentSpeaker) {
+            if (currentSpeaker.id <= 0) {
+                // adding speaker
+                currentSpeaker.id = this.speakers.length + 1;
+                this.speakers.push(currentSpeaker);
+            }
+            else {
+                // updating speaker
+                var speakerIndex = this.speakers.findIndex(function (speaker) { return speaker.id === currentSpeaker.id; });
+                if (speakerIndex > 0) {
+                    this.speakers[speakerIndex] = currentSpeaker;
+                }
+            }
+        }
     };
     SpeakerService.prototype.loadSpeakers = function () {
         return this.http.get(this.speakersUrl)

@@ -1,7 +1,7 @@
 ﻿<h3>Speaker Details</h3>
 
 <form class="form-horizontal">
-    <div class="form-group">
+    <div class="form-group" *ngIf="currentSpeaker.id > 0">
         <label for="speakerId" class="col-sm-2 control-label">Id</label>
         <div class="col-sm-10">
             <label id="speakerId">{{ currentSpeaker.id }}</label>
@@ -64,5 +64,6 @@
 </form>
 
 <p>
-    <button (click)="gotoSpeakers()">Back</button>
+    <button class="btn btn-primary" (click)="updateSpeaker(currentSpeaker)">{{ saveBtnText }}</button> &nbsp;&nbsp;
+    <button class="btn btn-default" (click)="gotoSpeakers()">Back</button>
 </p>

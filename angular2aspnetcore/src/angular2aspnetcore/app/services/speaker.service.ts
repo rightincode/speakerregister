@@ -1,7 +1,8 @@
 ﻿import { Injectable }     from '@angular/core';
 import { Http, Response } from '@angular/http';
-import { Speaker }        from '../models/speaker';
 import { Observable }     from 'rxjs/Observable';
+
+import { Speaker }        from '../models/speaker';
 
 @Injectable()
 
@@ -23,11 +24,28 @@ export class SpeakerService {
         return this.speakers;
     }
 
-    getSpeakerById(id): Speaker {
+    getSpeakerById(id: number): Speaker {
 
-        let foundSpeaker: Speaker = this.speakers.find((speaker) => speaker.id === id);
+        let foundSpeaker: Speaker = this.speakers.find((speaker: Speaker) => speaker.id === id);
 
         return foundSpeaker ? foundSpeaker : new Speaker();
+    }
+
+    saveSpeaker(currentSpeaker: Speaker) {
+
+        if (currentSpeaker) {
+            if (currentSpeaker.id <= 0) {
+                // adding speaker
+                currentSpeaker.id = this.speakers.length + 1;
+                this.speakers.push(currentSpeaker);
+            } else {
+                // updating speaker
+                let speakerIndex: number = this.speakers.findIndex((speaker: Speaker) => speaker.id === currentSpeaker.id);
+                if (speakerIndex > 0) {
+                    this.speakers[speakerIndex] = currentSpeaker;
+                }
+            }
+        }
     }
 
     private loadSpeakers(): Observable<Speaker[]> {

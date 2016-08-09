@@ -21,7 +21,13 @@ var SpeakerDetailComponent = (function () {
         var _this = this;
         this.sub = this.route.params.subscribe(function (params) {
             var currentSpeakerId = +params['id'];
-            _this.loadSpeaker(currentSpeakerId);
+            if (currentSpeakerId <= 0) {
+                _this.saveBtnText = 'Save';
+            }
+            else {
+                _this.saveBtnText = 'Update';
+                _this.loadSpeaker(currentSpeakerId);
+            }
         });
     };
     SpeakerDetailComponent.prototype.ngOnDestroy = function () {
@@ -29,6 +35,10 @@ var SpeakerDetailComponent = (function () {
     };
     SpeakerDetailComponent.prototype.loadSpeaker = function (currentSpeakerId) {
         this.currentSpeaker = this.speakerService.getSpeakerById(currentSpeakerId);
+    };
+    SpeakerDetailComponent.prototype.updateSpeaker = function (currentSpeaker) {
+        this.speakerService.saveSpeaker(currentSpeaker);
+        this.gotoSpeakers();
     };
     SpeakerDetailComponent.prototype.gotoSpeakers = function () {
         this.router.navigate(['/speakerlist']);

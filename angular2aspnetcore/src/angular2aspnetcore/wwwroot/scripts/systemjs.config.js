@@ -16,6 +16,7 @@
         'rxjs': { defaultExtension: 'js' },
         'angular2-in-memory-web-api': { defaultExtension: 'js' }
     };
+
     var ngPackageNames = [
       'common',
       'compiler',
@@ -27,13 +28,16 @@
       'router-deprecated',
       'upgrade'
     ];
+
     // Add package entries for angular packages
     ngPackageNames.forEach(function (pkgName) {
         packages['@angular/' + pkgName] = { main: './bundles/' + pkgName + '.umd.js', defaultExtension: 'js' };
     });
+
     var config = {
         map: map,
         packages: packages
-    }
+    };
+
     System.config(config);
 })(this);

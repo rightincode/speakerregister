@@ -29,11 +29,7 @@ export class SpeakerListComponent implements OnInit {
         this.speakers = this.speakerService.getSpeakers();
     }
 
-    //addHero(name: string) {
-    //    if (!name) { return; }
-    //    this.heroService.addHero(name)
-    //        .subscribe(
-    //        hero => this.heroes.push(hero),
-    //        error => this.errorMessage = <any>error);
-    //}
+    addSpeaker() {
+        this.router.navigate(['/speakerdetail', 0]);
+    }
 }
