@@ -11,7 +11,6 @@ var routes = [
     { path: 'speakerdetail/:id', component: speakerdetail_component_1.SpeakerDetailComponent },
     { path: '**', component: pagenotfound_component_1.PageNotFoundComponent }
 ];
-exports.appRouterProviders = [
-    router_1.provideRouter(routes)
-];
+exports.appRouterProviders = [];
+exports.routing = router_1.RouterModule.forRoot(routes);
 //# sourceMappingURL=app.routes.js.map

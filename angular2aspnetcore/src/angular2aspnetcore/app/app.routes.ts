@@ -1,11 +1,11 @@
-﻿import { provideRouter, RouterConfig } from '@angular/router';
+﻿import { Routes, RouterModule } from '@angular/router';
 
 import { SpeakerRegisterHomeComponent } from './home/speakerregisterhome.component';
 import { SpeakerListComponent } from './speaker/speakerlist.component';
 import { SpeakerDetailComponent } from './speaker/speakerdetail.component';
 import { PageNotFoundComponent } from './pagenotfound.component';
 
-const routes: RouterConfig = [
+const routes: Routes = [
     { path: '', component: SpeakerRegisterHomeComponent },
     { path: 'home', component: SpeakerRegisterHomeComponent },
     { path: 'speakerlist', component: SpeakerListComponent },
@@ -13,6 +13,7 @@ const routes: RouterConfig = [
     { path: '**', component: PageNotFoundComponent }
 ];
 
-export const appRouterProviders = [
-    provideRouter(routes)
+export const appRouterProviders: any[] = [
 ];
+
+export const routing = RouterModule.forRoot(routes);
