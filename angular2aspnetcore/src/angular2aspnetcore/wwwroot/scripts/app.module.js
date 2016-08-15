@@ -18,15 +18,15 @@ require('./rxjs-operators');
 /* Feature Modules */
 var speaker_module_1 = require('./speaker/speaker.module');
 /* Routing */
-var app_routes_1 = require('./app.routes');
+var app_routing_1 = require('./app.routing');
 var AppModule = (function () {
     function AppModule() {
     }
     AppModule = __decorate([
         core_1.NgModule({
-            imports: [platform_browser_1.BrowserModule, speaker_module_1.SpeakerModule, app_routes_1.routing],
+            imports: [platform_browser_1.BrowserModule, speaker_module_1.SpeakerModule, app_routing_1.routing],
             declarations: [app_component_1.AppComponent, pagenotfound_component_1.PageNotFoundComponent],
-            providers: [app_routes_1.appRouterProviders, http_1.HTTP_PROVIDERS],
+            providers: [app_routing_1.appRouterProviders, http_1.HTTP_PROVIDERS],
             bootstrap: [app_component_1.AppComponent]
         }), 
         __metadata('design:paramtypes', [])

@@ -15,12 +15,13 @@ var speakerregisterhome_component_1 = require('../home/speakerregisterhome.compo
 var speakerlist_component_1 = require('./speakerlist.component');
 var speakerdetail_component_1 = require('./speakerdetail.component');
 var speaker_service_1 = require('./speaker.service');
+var speaker_routing_1 = require('./speaker.routing');
 var SpeakerModule = (function () {
     function SpeakerModule() {
     }
     SpeakerModule = __decorate([
         core_1.NgModule({
-            imports: [common_1.CommonModule, forms_1.FormsModule],
+            imports: [common_1.CommonModule, forms_1.FormsModule, speaker_routing_1.speakerRouting],
             declarations: [speakerregisterhome_component_1.SpeakerRegisterHomeComponent, speakerlist_component_1.SpeakerListComponent, speakerdetail_component_1.SpeakerDetailComponent],
             providers: [speaker_service_1.SpeakerService],
             exports: [speakerregisterhome_component_1.SpeakerRegisterHomeComponent, speakerlist_component_1.SpeakerListComponent, speakerdetail_component_1.SpeakerDetailComponent]

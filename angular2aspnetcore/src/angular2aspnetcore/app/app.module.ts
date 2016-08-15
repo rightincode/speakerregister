@@ -11,7 +11,7 @@ import './rxjs-operators';
 import { SpeakerModule } from './speaker/speaker.module';
 
 /* Routing */
-import { routing, appRouterProviders } from './app.routes';
+import { routing, appRouterProviders } from './app.routing';
 
 @NgModule({
     imports: [BrowserModule, SpeakerModule, routing],
