@@ -10,26 +10,20 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var platform_browser_1 = require('@angular/platform-browser');
-var forms_1 = require('@angular/forms');
+var http_1 = require('@angular/http');
 var app_component_1 = require('./app.component');
-var speakerregisterhome_component_1 = require('./home/speakerregisterhome.component');
-var speakerlist_component_1 = require('./speaker/speakerlist.component');
-var speakerdetail_component_1 = require('./speaker/speakerdetail.component');
 var pagenotfound_component_1 = require('./pagenotfound.component');
+var speaker_module_1 = require('./speaker/speaker.module');
 var app_routes_1 = require('./app.routes');
+require('./rxjs-operators');
 var AppModule = (function () {
     function AppModule() {
     }
     AppModule = __decorate([
         core_1.NgModule({
-            imports: [platform_browser_1.BrowserModule, forms_1.FormsModule, app_routes_1.routing],
-            declarations: [
-                app_component_1.AppComponent,
-                speakerregisterhome_component_1.SpeakerRegisterHomeComponent,
-                speakerlist_component_1.SpeakerListComponent,
-                speakerdetail_component_1.SpeakerDetailComponent,
-                pagenotfound_component_1.PageNotFoundComponent],
-            providers: [app_routes_1.appRouterProviders],
+            imports: [platform_browser_1.BrowserModule, app_routes_1.routing, speaker_module_1.SpeakerModule],
+            declarations: [app_component_1.AppComponent, pagenotfound_component_1.PageNotFoundComponent],
+            providers: [app_routes_1.appRouterProviders, http_1.HTTP_PROVIDERS],
             bootstrap: [app_component_1.AppComponent]
         }), 
         __metadata('design:paramtypes', [])
