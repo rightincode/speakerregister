@@ -1,4 +1,4 @@
-﻿import { NgModule }      from '@angular/core';
+﻿import { NgModule, OnInit }      from '@angular/core';
 import { CommonModule}   from '@angular/common';
 import { FormsModule }   from '@angular/forms';
 
@@ -15,4 +15,8 @@ import { speakerRouting } from './speaker.routing';
     providers: [SpeakerService],
     exports: [SpeakerRegisterHomeComponent, SpeakerListComponent, SpeakerDetailComponent]
 })
-export class SpeakerModule { }
+export class SpeakerModule {
+
+    constructor(private speakerService: SpeakerService) {
+    }
+}

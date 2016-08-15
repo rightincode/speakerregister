@@ -17,7 +17,8 @@ var speakerdetail_component_1 = require('./speakerdetail.component');
 var speaker_service_1 = require('./speaker.service');
 var speaker_routing_1 = require('./speaker.routing');
 var SpeakerModule = (function () {
-    function SpeakerModule() {
+    function SpeakerModule(speakerService) {
+        this.speakerService = speakerService;
     }
     SpeakerModule = __decorate([
         core_1.NgModule({
@@ -26,7 +27,7 @@ var SpeakerModule = (function () {
             providers: [speaker_service_1.SpeakerService],
             exports: [speakerregisterhome_component_1.SpeakerRegisterHomeComponent, speakerlist_component_1.SpeakerListComponent, speakerdetail_component_1.SpeakerDetailComponent]
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [speaker_service_1.SpeakerService])
     ], SpeakerModule);
     return SpeakerModule;
 }());
