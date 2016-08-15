@@ -4,7 +4,7 @@ import { SpeakerRegisterHomeComponent } from './home/speakerregisterhome.compone
 import { PageNotFoundComponent } from './pagenotfound.component';
 
 const routes: Routes = [
-    { path: '', component: SpeakerRegisterHomeComponent },
+    { path: '', redirectTo: '/home', pathMatch: 'full' },
     { path: 'home', component: SpeakerRegisterHomeComponent },
     { path: '**', component: PageNotFoundComponent }
 ];
