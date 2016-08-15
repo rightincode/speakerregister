@@ -11,12 +11,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var http_1 = require('@angular/http');
 var Observable_1 = require('rxjs/Observable');
-var speaker_1 = require('../models/speaker');
+var speaker_1 = require('./speaker');
 var SpeakerService = (function () {
     function SpeakerService(http) {
         var _this = this;
         this.http = http;
-        this.speakersUrl = 'app/testdata/speakers.json'; // URL to web API
+        this.speakersUrl = 'app/testdata/speakers.json'; // url to web API
         this.loadSpeakers()
             .subscribe(function (speakers) { return _this.speakers = speakers; }, function (error) { return _this.errorMessage = error; });
     }
@@ -53,8 +53,8 @@ var SpeakerService = (function () {
         return body.data || {};
     };
     SpeakerService.prototype.handleError = function (error) {
-        // In a real world app, we might use a remote logging infrastructure
-        // We'd also dig deeper into the error to get a better message
+        // in a real world app, we might use a remote logging infrastructure
+        // we'd also dig deeper into the error to get a better message
         var errMsg = (error.message) ? error.message :
             error.status ? error.status + " - " + error.statusText : 'Server error';
         console.error(errMsg); // log to console instead

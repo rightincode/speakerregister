@@ -14,7 +14,7 @@ var forms_1 = require('@angular/forms');
 var speakerregisterhome_component_1 = require('../home/speakerregisterhome.component');
 var speakerlist_component_1 = require('./speakerlist.component');
 var speakerdetail_component_1 = require('./speakerdetail.component');
-var speaker_service_1 = require('../services/speaker.service');
+var speaker_service_1 = require('./speaker.service');
 var SpeakerModule = (function () {
     function SpeakerModule() {
     }

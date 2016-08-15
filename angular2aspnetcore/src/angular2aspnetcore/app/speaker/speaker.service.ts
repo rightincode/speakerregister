@@ -2,13 +2,13 @@
 import { Http, Response } from '@angular/http';
 import { Observable }     from 'rxjs/Observable';
 
-import { Speaker }        from '../models/speaker';
+import { Speaker }        from './speaker';
 
 @Injectable()
 
 export class SpeakerService {
 
-    private speakersUrl = 'app/testdata/speakers.json';  // URL to web API
+    private speakersUrl = 'app/testdata/speakers.json';  // url to web API
     private speakers: Speaker[];
 
     errorMessage: string;
@@ -31,7 +31,7 @@ export class SpeakerService {
         return foundSpeaker ? foundSpeaker : new Speaker();
     }
 
-    saveSpeaker(currentSpeaker: Speaker) {
+    saveSpeaker(currentSpeaker: Speaker): void {
 
         if (currentSpeaker) {
             if (currentSpeaker.id <= 0) {
@@ -54,15 +54,15 @@ export class SpeakerService {
             .catch(this.handleError);
     }
 
-    private extractData(res: Response) {
-        let body = res.json();
+    private extractData(res: Response): any[] {
+        let body: any = res.json();
         return body.data || {};
     }
 
-    private handleError(error: any) {
-        // In a real world app, we might use a remote logging infrastructure
-        // We'd also dig deeper into the error to get a better message
-        let errMsg = (error.message) ? error.message :
+    private handleError(error: any): Observable<Speaker[]> {
+        // in a real world app, we might use a remote logging infrastructure
+        // we'd also dig deeper into the error to get a better message
+        let errMsg: any = (error.message) ? error.message :
             error.status ? `${error.status} - ${error.statusText}` : 'Server error';
         console.error(errMsg); // log to console instead
         return Observable.throw(errMsg);

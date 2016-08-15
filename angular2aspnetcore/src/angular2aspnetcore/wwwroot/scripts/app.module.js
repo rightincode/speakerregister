@@ -11,17 +11,20 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var platform_browser_1 = require('@angular/platform-browser');
 var http_1 = require('@angular/http');
+/* App Root */
 var app_component_1 = require('./app.component');
 var pagenotfound_component_1 = require('./pagenotfound.component');
-var speaker_module_1 = require('./speaker/speaker.module');
-var app_routes_1 = require('./app.routes');
 require('./rxjs-operators');
+/* Feature Modules */
+var speaker_module_1 = require('./speaker/speaker.module');
+/* Routing */
+var app_routes_1 = require('./app.routes');
 var AppModule = (function () {
     function AppModule() {
     }
     AppModule = __decorate([
         core_1.NgModule({
-            imports: [platform_browser_1.BrowserModule, app_routes_1.routing, speaker_module_1.SpeakerModule],
+            imports: [platform_browser_1.BrowserModule, speaker_module_1.SpeakerModule, app_routes_1.routing],
             declarations: [app_component_1.AppComponent, pagenotfound_component_1.PageNotFoundComponent],
             providers: [app_routes_1.appRouterProviders, http_1.HTTP_PROVIDERS],
             bootstrap: [app_component_1.AppComponent]

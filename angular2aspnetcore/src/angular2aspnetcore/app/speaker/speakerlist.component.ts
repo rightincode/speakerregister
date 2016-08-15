@@ -1,8 +1,8 @@
 ﻿import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { Speaker } from '../models/speaker';
-import { SpeakerService } from '../services/speaker.service';
+import { Speaker } from './speaker';
+import { SpeakerService } from './speaker.service';
 
 @Component({
     templateUrl: '../../app/speaker/speakerlist.component.html'
