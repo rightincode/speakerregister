@@ -22,7 +22,7 @@ export class ConferenceListComponent implements OnInit {
     }
 
     onSelect(conference: Conference) {
-        //this.router.navigate(['/speakerdetail', speaker.id]);
+        this.router.navigate(['/conferencemanagement', conference.id]);
     }
 
     onGetConferences() {
@@ -30,6 +30,6 @@ export class ConferenceListComponent implements OnInit {
     }
 
     onAddConference() {
-        //this.router.navigate(['/speakerdetail', 0]);
+        this.router.navigate(['/conferencemanagement', 0]);
     }
 }

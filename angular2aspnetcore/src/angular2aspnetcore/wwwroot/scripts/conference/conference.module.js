@@ -13,7 +13,7 @@ var common_1 = require('@angular/common');
 var forms_1 = require('@angular/forms');
 var conference_component_1 = require('./conference.component');
 var conferencelist_component_1 = require('./conferencelist.component');
-//import { SpeakerDetailComponent } from './speakerdetail.component';
+var conferencedetail_component_1 = require('./conferencedetail.component');
 var conference_service_1 = require('./conference.service');
 var conference_routing_1 = require('./conference.routing');
 var ConferenceModule = (function () {
@@ -23,9 +23,9 @@ var ConferenceModule = (function () {
     ConferenceModule = __decorate([
         core_1.NgModule({
             imports: [common_1.CommonModule, forms_1.FormsModule, conference_routing_1.conferenceRouting],
-            declarations: [conference_component_1.ConferenceComponent, conferencelist_component_1.ConferenceListComponent],
+            declarations: [conference_component_1.ConferenceComponent, conferencelist_component_1.ConferenceListComponent, conferencedetail_component_1.ConferenceDetailComponent],
             providers: [conference_service_1.ConferenceService],
-            exports: [conference_component_1.ConferenceComponent, conferencelist_component_1.ConferenceListComponent]
+            exports: [conference_component_1.ConferenceComponent, conferencelist_component_1.ConferenceListComponent, conferencedetail_component_1.ConferenceDetailComponent]
         }), 
         __metadata('design:paramtypes', [conference_service_1.ConferenceService])
     ], ConferenceModule);

@@ -20,13 +20,13 @@ var ConferenceListComponent = (function () {
         this.onGetConferences();
     };
     ConferenceListComponent.prototype.onSelect = function (conference) {
-        //this.router.navigate(['/speakerdetail', speaker.id]);
+        this.router.navigate(['/conferencemanagement', conference.id]);
     };
     ConferenceListComponent.prototype.onGetConferences = function () {
         this.conferences = this.conferenceService.getConferences();
     };
     ConferenceListComponent.prototype.onAddConference = function () {
-        //this.router.navigate(['/speakerdetail', 0]);
+        this.router.navigate(['/conferencemanagement', 0]);
     };
     ConferenceListComponent = __decorate([
         core_1.Component({

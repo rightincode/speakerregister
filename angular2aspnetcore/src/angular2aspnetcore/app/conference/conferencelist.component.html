@@ -16,8 +16,8 @@
         <td>{{ conference.id }}</td>
         <td>{{ conference.name }}</td>
         <td>{{ conference.location }}</td>
-        <td>{{ conference.startDate }}</td>
-        <td>{{ conference.endDate }}</td>
+        <td>{{ conference.startDate | date }}</td>
+        <td>{{ conference.endDate | date }}</td>
         <td>{{ conference.city }}</td>
         <td>{{ conference.state }}</td>
     </tr>
