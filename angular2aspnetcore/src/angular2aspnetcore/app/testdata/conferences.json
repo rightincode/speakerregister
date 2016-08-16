@@ -1,0 +1,23 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "name": "Music City Code 2016",
+      "location": "Swang Business Center",
+      "startDate": "08-18-2016",
+      "endDate":  "08-20-2016",
+      "city": "Nashville",
+      "state": "TN"
+    },
+    {
+      "id": 2,
+      "name": "Raleigh Code Camp",
+      "location": "Wake Tech Community College",
+      "startDate": "10-29-2016",
+      "endDate": "10-29-2016",
+      "city": "Raleigh",
+      "state": "NC"
+    }
+  ]
+}
+

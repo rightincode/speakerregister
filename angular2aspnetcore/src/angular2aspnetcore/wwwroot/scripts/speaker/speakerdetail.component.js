@@ -48,7 +48,8 @@ var SpeakerDetailComponent = (function () {
     };
     SpeakerDetailComponent = __decorate([
         core_1.Component({
-            templateUrl: '../../app/speaker/speakerdetail.component.html'
+            templateUrl: 'app/speaker/speakerdetail.component.html',
+            styleUrls: ['app/speaker/speakerdetail.component.css']
         }), 
         __metadata('design:paramtypes', [router_1.ActivatedRoute, router_1.Router, speaker_service_1.SpeakerService])
     ], SpeakerDetailComponent);

@@ -5,7 +5,8 @@ import { Speaker }        from './speaker';
 import { SpeakerService } from './speaker.service';
 
 @Component({
-    templateUrl: '../../app/speaker/speakerdetail.component.html'
+    templateUrl: 'app/speaker/speakerdetail.component.html',
+    styleUrls: ['app/speaker/speakerdetail.component.css']
 })
 
 export class SpeakerDetailComponent implements OnInit, OnDestroy {

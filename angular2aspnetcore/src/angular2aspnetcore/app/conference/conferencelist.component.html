@@ -1,0 +1,24 @@
+﻿<p>
+    <button class="btn btn-primary" (click)="onAddConference()">Add Conference</button>
+</p>
+<table class="table table-hover">
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Location</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+        <th>City</th>
+        <th>State</th>
+    </tr>
+    <tr *ngFor="let conference of conferences"
+        (click)="onSelect(conference)">
+        <td>{{ conference.id }}</td>
+        <td>{{ conference.name }}</td>
+        <td>{{ conference.location }}</td>
+        <td>{{ conference.startDate }}</td>
+        <td>{{ conference.endDate }}</td>
+        <td>{{ conference.city }}</td>
+        <td>{{ conference.state }}</td>
+    </tr>
+</table>

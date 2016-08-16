@@ -9,12 +9,13 @@ import './rxjs-operators';
 
 /* Feature Modules */
 import { SpeakerModule } from './speaker/speaker.module';
+import { ConferenceModule } from './conference/conference.module';
 
 /* Routing */
 import { routing, appRouterProviders } from './app.routing';
 
 @NgModule({
-    imports: [BrowserModule, SpeakerModule, routing],
+    imports: [BrowserModule, ConferenceModule, SpeakerModule, routing],
     declarations: [AppComponent, PageNotFoundComponent],
     providers: [appRouterProviders, HTTP_PROVIDERS],
     bootstrap: [AppComponent]
