@@ -1,6 +1,6 @@
 ﻿import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HTTP_PROVIDERS } from '@angular/http';
+import { HttpModule, JsonpModule } from '@angular/http';
 
 /* App Root */
 import { AppComponent }  from './app.component';
@@ -15,9 +15,9 @@ import { ConferenceModule } from './conference/conference.module';
 import { routing, appRouterProviders } from './app.routing';
 
 @NgModule({
-    imports: [BrowserModule, ConferenceModule, SpeakerModule, routing],
+    imports: [BrowserModule, HttpModule, JsonpModule, ConferenceModule, SpeakerModule, routing],
     declarations: [AppComponent, PageNotFoundComponent],
-    providers: [appRouterProviders, HTTP_PROVIDERS],
+    providers: [appRouterProviders],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

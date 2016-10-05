@@ -25,9 +25,9 @@ var AppModule = (function () {
     }
     AppModule = __decorate([
         core_1.NgModule({
-            imports: [platform_browser_1.BrowserModule, conference_module_1.ConferenceModule, speaker_module_1.SpeakerModule, app_routing_1.routing],
+            imports: [platform_browser_1.BrowserModule, http_1.HttpModule, http_1.JsonpModule, conference_module_1.ConferenceModule, speaker_module_1.SpeakerModule, app_routing_1.routing],
             declarations: [app_component_1.AppComponent, pagenotfound_component_1.PageNotFoundComponent],
-            providers: [app_routing_1.appRouterProviders, http_1.HTTP_PROVIDERS],
+            providers: [app_routing_1.appRouterProviders],
             bootstrap: [app_component_1.AppComponent]
         }), 
         __metadata('design:paramtypes', [])

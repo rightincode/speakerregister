@@ -25,7 +25,6 @@ gulp.task('clearAppDestinationFolder',
 
 gulp.task('moveToLibs', function (done) {
     gulp.src([
-      'node_modules/es6-shim/es6-shim.min.js',
       'node_modules/systemjs/dist/system-polyfils.js',
       'node_modules/systemjs/dist/system.src.js',
       'node_modules/reflect-metadata/Reflect.js',
@@ -33,10 +32,7 @@ gulp.task('moveToLibs', function (done) {
       'node_modules/zone.js/dist/zone.js',
       'node_modules/jquery/dist/jquery.*js',
       'node_modules/bootstrap/dist/js/bootstrap*.js',
-      
       'node_modules/core-js/client/shim.min.js'
-      
-      //'node_modules/systemjs/dist/*.*',
     ]).pipe(gulp.dest('./wwwroot/libs/'));
 
     gulp.src(['node_modules/@angular/**/*'], { base: 'node_modules/@angular' })
