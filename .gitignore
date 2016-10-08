@@ -245,7 +245,7 @@ ModelManifest.xml
 .fake/
 
 #Custom excludes
-/src/typings
-/src/wwwroot/libs
-/src/wwwroot/app
-/src/wwwroot/scripts
+/src/sregister_web/typings
+/src/sregister_web/wwwroot/libs
+/src/sregister_web/wwwroot/app
+/src/sregister_web/wwwroot/scripts

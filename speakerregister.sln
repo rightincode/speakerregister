@@ -10,7 +10,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		global.json = global.json
 	EndProjectSection
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "sregister_web", "src\sregister_web.xproj", "{2D74DB91-BAA3-478A-AACB-1F1536C5D065}"
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "sregister_web", "src\sregister_web\sregister_web.xproj", "{2D74DB91-BAA3-478A-AACB-1F1536C5D065}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
