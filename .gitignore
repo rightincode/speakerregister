@@ -245,7 +245,7 @@ ModelManifest.xml
 .fake/
 
 #Custom excludes
-/angular2aspnetcore/src/typings
-/angular2aspnetcore/src/wwwroot/libs
-/angular2aspnetcore/src/wwwroot/app
-/angular2aspnetcore/src/wwwroot/scripts
+/src/typings
+/src/wwwroot/libs
+/src/wwwroot/app
+/src/wwwroot/scripts
