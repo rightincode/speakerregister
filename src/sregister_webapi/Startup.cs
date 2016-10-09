@@ -37,6 +37,14 @@ namespace sregister_webapi
         {
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
+            
+            app.UseIdentityServerAuthentication(new IdentityServerAuthenticationOptions
+            {
+                Authority = "http://localhost:9040",
+                ScopeName = "sregisterAPI",
+
+                RequireHttpsMetadata = false
+            });
 
             app.UseMvc();
         }

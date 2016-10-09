@@ -59,6 +59,14 @@ namespace sregister_sec
                     ClientSecrets = new List<Secret> {
                         new Secret("superSecretPassword".Sha256())},
                     AllowedScopes = new List<string> {"customAPI"}
+                },
+                new Client {
+                    ClientId = "sregisterClient",
+                    ClientName = "Speaker Register Client Application",
+                    AllowedGrantTypes = GrantTypes.ClientCredentials,
+                    ClientSecrets = new List<Secret> {
+                        new Secret("speakerRegisterClientPassword".Sha256())},
+                    AllowedScopes = new List<string> { "sregisterAPI" }
                 }
             };
         }
@@ -84,6 +92,17 @@ namespace sregister_sec
                     },
                     ScopeSecrets =  new List<Secret> {
                         new Secret("scopeSecret".Sha256())
+                    }
+                },
+                new Scope
+                {
+                    Name = "sregisterAPI",
+                    DisplayName = "Speaker Register API",
+                    Description = "Speaker Register API scope",
+                    Type = ScopeType.Resource,
+                    ScopeSecrets =  new List<Secret> {
+                        new Secret("sregisterAPISecret".Sha256())
+    
                     }
                 }
             };
