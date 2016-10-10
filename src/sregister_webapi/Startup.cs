@@ -40,7 +40,7 @@ namespace sregister_webapi
             
             app.UseIdentityServerAuthentication(new IdentityServerAuthenticationOptions
             {
-                Authority = "http://localhost:9040",
+                Authority = "http://localhost:9440",
                 ScopeName = "sregisterAPI",
 
                 RequireHttpsMetadata = false

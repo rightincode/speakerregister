@@ -40,10 +40,6 @@ namespace sregister_sec
 
             app.UseIdentityServer();
 
-            app.Run(async (context) =>
-            {
-                await context.Response.WriteAsync("Hello World from sregister_sec!");
-            });
         }
     }
 
@@ -52,14 +48,6 @@ namespace sregister_sec
         public static IEnumerable<Client> Get()
         {
             return new List<Client> {
-                new Client {
-                    ClientId = "oauthClient",
-                    ClientName = "Example Client Credentials Client Application",
-                    AllowedGrantTypes = GrantTypes.ClientCredentials,
-                    ClientSecrets = new List<Secret> {
-                        new Secret("superSecretPassword".Sha256())},
-                    AllowedScopes = new List<string> {"customAPI"}
-                },
                 new Client {
                     ClientId = "sregisterClient",
                     ClientName = "Speaker Register Client Application",
@@ -82,18 +70,6 @@ namespace sregister_sec
                 StandardScopes.Email,
                 StandardScopes.Roles,
                 StandardScopes.OfflineAccess,
-                new Scope {
-                    Name = "customAPI",
-                    DisplayName = "Custom API",
-                    Description = "Custom API scope",
-                    Type = ScopeType.Resource,
-                    Claims = new List<ScopeClaim> {
-                        new ScopeClaim(JwtClaimTypes.Role)
-                    },
-                    ScopeSecrets =  new List<Secret> {
-                        new Secret("scopeSecret".Sha256())
-                    }
-                },
                 new Scope
                 {
                     Name = "sregisterAPI",
