@@ -35,12 +35,16 @@ gulp.task('moveToLibs', function (done) {
       'node_modules/core-js/client/shim.min.js'
     ]).pipe(gulp.dest('./wwwroot/libs/'));
 
-    gulp.src(['node_modules/@angular/**/*'], { base: 'node_modules/@angular' })
-        .pipe(gulp.dest('./wwwroot/libs/@angular'));
-    gulp.src(['node_modules/angular2-in-memory-web-api/**/*'], { base: 'node_modules/angular2-in-memory-web-api' })
-        .pipe(gulp.dest('./wwwroot/libs/angular2-in-memory-web-api'));
-    gulp.src(['node_modules/rxjs/**/*'], { base: 'node_modules/rxjs' })
-        .pipe(gulp.dest('./wwwroot/libs/rxjs'));
+    //gulp.src(['node_modules/@angular/**/*'], { base: 'node_modules/@angular' })
+    //    .pipe(gulp.dest('./wwwroot/libs/@angular'));
+    //gulp.src(['node_modules/angular2-in-memory-web-api/**/*'], { base: 'node_modules/angular2-in-memory-web-api' })
+    //    .pipe(gulp.dest('./wwwroot/libs/angular2-in-memory-web-api'));
+    //gulp.src(['node_modules/rxjs/**/*'], { base: 'node_modules/rxjs' })
+    //    .pipe(gulp.dest('./wwwroot/libs/rxjs'));
+    //gulp.src(['node_modules/angular2-jwt/**/*'], { base: 'node_modules/angular2-jwt' })
+    //    .pipe(gulp.dest('./wwwroot/libs/angular2-jwt'));
+    gulp.src(['node_modules/**/*'], { base: '.'})
+        .pipe(gulp.dest('./wwwroot/libs'));
 
     gulp.src([
       'node_modules/bootstrap/dist/css/bootstrap.css'

@@ -1,19 +1,22 @@
-﻿import { Injectable }     from '@angular/core';
-import { Http, Response, Headers, URLSearchParams } from '@angular/http';
-import { Observable }     from 'rxjs/Observable';
+﻿import { Injectable } from '@angular/core';
+import { Response } from '@angular/http';
+import { Observable } from 'rxjs/Observable';
+import { Http } from '@angular/http';
 
-import { Speaker }        from './speaker';
+import { Speaker } from './speaker';
+import { Constants } from '../config/constants';
+
+import { HttpHelperService } from '../services/httphelper/httphelper.service';
 
 @Injectable()
 
 export class SpeakerService {
 
-    private speakersUrl = 'app/testdata/speakers.json';  // url to web API
     private speakers: Speaker[];
 
     errorMessage: string;
 
-    constructor(private http: Http) {
+    constructor(private http: Http, private constants: Constants, private httpHelperService: HttpHelperService) {
         this.loadSpeakers()
             .subscribe(
             speakers => this.speakers = speakers,
@@ -49,7 +52,7 @@ export class SpeakerService {
     }
 
     private loadSpeakers(): Observable<Speaker[]> {
-        return this.http.get(this.speakersUrl)
+        return this.http.get(this.constants.speakersApi, this.httpHelperService.getAuthRequestOptionsArg())
             .map(this.extractData)
             .catch(this.handleError);
     }

@@ -1,6 +1,6 @@
 ﻿import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpModule, JsonpModule } from '@angular/http';
+import { HttpModule, JsonpModule, Http } from '@angular/http';
 
 /* App Root */
 import { AppComponent }  from './app.component';
@@ -11,13 +11,21 @@ import './rxjs-operators';
 import { SpeakerModule } from './speaker/speaker.module';
 import { ConferenceModule } from './conference/conference.module';
 
+//Shared Services
+import { TokenService } from './services/token/token.service';
+import { HttpHelperService } from './services/httphelper/httphelper.service';
+import { Constants } from './config/constants';
+
 /* Routing */
 import { routing, appRouterProviders } from './app.routing';
 
 @NgModule({
     imports: [BrowserModule, HttpModule, JsonpModule, ConferenceModule, SpeakerModule, routing],
     declarations: [AppComponent, PageNotFoundComponent],
-    providers: [appRouterProviders],
+    providers: [appRouterProviders, TokenService, Constants, HttpHelperService],
     bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+
+    constructor(private tokenService: TokenService){}
+}

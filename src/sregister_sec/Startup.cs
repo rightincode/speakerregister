@@ -1,9 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Security.Claims;
 using IdentityModel;
+using IdentityServer4.Configuration;
 using IdentityServer4.Models;
 using IdentityServer4.Services.InMemory;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Cors.Infrastructure;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -16,6 +18,8 @@ namespace sregister_sec
         // For more information on how to configure your application, visit http://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors();
+
             services.AddIdentityServer()
                 .AddInMemoryStores()
                 .AddInMemoryClients(Clients.Get())
@@ -34,6 +38,7 @@ namespace sregister_sec
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseCors(builder => builder.AllowAnyOrigin());
             app.UseIdentityServer();
 
         }
