@@ -1,5 +1,6 @@
 ﻿import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs/Observable';
 
 import { Speaker } from './speaker';
 import { SpeakerService } from './speaker.service';
@@ -26,8 +27,15 @@ export class SpeakerListComponent implements OnInit {
     }
 
     onGetSpeakers() {
-        this.speakers = this.speakerService.getSpeakers();
-    }
+        this.speakerService.getSpeakers()
+            .subscribe(speakers => {
+                    this.speakers = speakers;
+                },
+                (error) => {
+                    this.errorMessage = error;
+                }
+            );
+    };
 
     onAddSpeaker() {
         this.router.navigate(['/speakerdetail', 0]);

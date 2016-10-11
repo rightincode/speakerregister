@@ -17,14 +17,21 @@ export class SpeakerService {
     errorMessage: string;
 
     constructor(private http: Http, private constants: Constants, private httpHelperService: HttpHelperService) {
-        this.loadSpeakers()
-            .subscribe(
-            speakers => this.speakers = speakers,
-            error => this.errorMessage = <any>error);
+       
     }
 
-    getSpeakers(): Speaker[] {
-        return this.speakers;
+    getSpeakers(): Observable<Speaker[]> {
+
+        return new Observable<Speaker[]>(observer => {
+            this.loadSpeakers().subscribe(speakers => {
+                    observer.next(speakers);
+                    observer.complete();
+                },
+                error => {
+                    observer.next(<any>error);
+                    observer.complete();
+                });     
+        });
     }
 
     getSpeakerById(id: number): Speaker {
@@ -59,7 +66,7 @@ export class SpeakerService {
 
     private extractData(res: Response): any[] {
         let body: any = res.json();
-        return body.data || {};
+        return body || {};
     }
 
     private handleError(error: any): Observable<Speaker[]> {

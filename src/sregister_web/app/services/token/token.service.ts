@@ -46,6 +46,7 @@ export class TokenService {
     }
 
     private saveToken(token: Token) {
+        sessionStorage.removeItem(this.constants.clientCredentialTokenName);
         sessionStorage.setItem(this.constants.clientCredentialTokenName, token.access_token);
     }
 }
