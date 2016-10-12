@@ -13,10 +13,14 @@ export class HttpHelperService {
         
     }
 
-    getAuthRequestOptionsArg(): RequestOptions {
+    getAuthRequestOptionsArg(contentType?: string): RequestOptions {
  
         let headers = new Headers();
         headers.append('Authorization', 'Bearer ' + this.tokenService.loadToken());
+
+        if (contentType === 'json') {
+            headers.append('Content-Type', 'application/json');
+        }
 
         let options = new RequestOptions({ headers: headers });
 

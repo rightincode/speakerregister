@@ -1,4 +1,4 @@
-﻿import { Component, OnInit } from '@angular/core';
+﻿import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 
@@ -9,7 +9,9 @@ import { SpeakerService } from './speaker.service';
     templateUrl: '../../app/speaker/speakerlist.component.html'
 })
 
-export class SpeakerListComponent implements OnInit {
+export class SpeakerListComponent implements OnInit, OnDestroy {
+
+    private speakerServiceSub: any;
 
     errorMessage: string;
     speakers: Speaker[];
@@ -22,12 +24,16 @@ export class SpeakerListComponent implements OnInit {
         this.onGetSpeakers();
     }
 
+    ngOnDestroy() {
+        this.speakerServiceSub.unsubscribe();
+    }
+
     onSelect(speaker: Speaker) {
         this.router.navigate(['/speakerdetail', speaker.id]);
     }
 
     onGetSpeakers() {
-        this.speakerService.getSpeakers()
+        this.speakerServiceSub = this.speakerService.getSpeakers()
             .subscribe(speakers => {
                     this.speakers = speakers;
                 },

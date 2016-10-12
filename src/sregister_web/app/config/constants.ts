@@ -13,7 +13,7 @@ export class Constants {
     public clientCredentialTokenName: string = 'sregister_access_token';
 
     public speakersApi: string = 'http://localhost:2353/api/speakers';
-    
+
     constructor() {
         this.clientCredentialTokenPostBody = new URLSearchParams();
         this.clientCredentialTokenPostBody.append('grant_type', 'client_credentials');

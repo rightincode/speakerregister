@@ -12,6 +12,8 @@ import { SpeakerService } from './speaker.service';
 export class SpeakerDetailComponent implements OnInit, OnDestroy {
 
     private sub: any;
+    private loadSpeakerSub: any;
+    private saveSpeakerSub: any;
 
     currentSpeakerId: number;
     currentSpeaker: Speaker;
@@ -26,8 +28,9 @@ export class SpeakerDetailComponent implements OnInit, OnDestroy {
         this.sub = this.route.params.subscribe(params => {
             this.currentSpeakerId = +params['id'];
 
+            this.currentSpeaker = new Speaker();
+
             if (this.currentSpeakerId <= 0) {
-                this.currentSpeaker = new Speaker();
                 this.currentSpeaker.id = this.currentSpeakerId;
                 this.saveBtnText = 'Save';
             } else {
@@ -38,16 +41,33 @@ export class SpeakerDetailComponent implements OnInit, OnDestroy {
     }
 
     ngOnDestroy() {
-        this.sub.unsubscribe();
+        if (this.sub) {
+            this.sub.unsubscribe();    
+        }
+        if (this.loadSpeakerSub) {
+            this.loadSpeakerSub.unsubscribe();    
+        }
+        if (this.saveSpeakerSub) {
+            this.saveSpeakerSub.unsubscribe();    
+        }
     }
 
     loadSpeaker(currentSpeakerId: number) {
-        this.currentSpeaker = this.speakerService.getSpeakerById(currentSpeakerId);
+        this.loadSpeakerSub = this.speakerService.getSpeakerById(currentSpeakerId)
+            .subscribe(speaker => {
+                this.currentSpeaker = speaker;
+            },
+            (error) => {}
+            );
     }
 
     updateSpeaker(currentSpeaker: Speaker) {
-        this.speakerService.saveSpeaker(currentSpeaker);
-        this.gotoSpeakers();
+        this.saveSpeakerSub = this.speakerService.saveSpeaker(currentSpeaker).subscribe(speaker => {
+            this.currentSpeaker = speaker;
+            this.gotoSpeakers();
+        },
+            (error) => {}
+        );
     }
 
     gotoSpeakers() {

@@ -34,42 +34,69 @@ export class SpeakerService {
         });
     }
 
-    getSpeakerById(id: number): Speaker {
+    getSpeakerById(id: number): Observable<Speaker> {
 
-        let foundSpeaker: Speaker = this.speakers.find((speaker: Speaker) => speaker.id === id);
-
-        return foundSpeaker ? foundSpeaker : new Speaker();
+        return new Observable<Speaker>(observer => {
+            this.loadSpeaker(id).subscribe(speaker => {
+                    observer.next(speaker);
+                    observer.complete();
+                },
+                error => {
+                    observer.next(<any>error);
+                    observer.complete();
+                });
+        });
     }
 
-    saveSpeaker(currentSpeaker: Speaker): void {
+    saveSpeaker(currentSpeaker: Speaker): Observable<Speaker> {
 
-        if (currentSpeaker) {
-            if (currentSpeaker.id <= 0) {
-                // adding speaker
-                currentSpeaker.id = this.speakers.length + 1;
-                this.speakers.push(currentSpeaker);
-            } else {
-                // updating speaker
-                let speakerIndex: number = this.speakers.findIndex((speaker: Speaker) => speaker.id === currentSpeaker.id);
-                if (speakerIndex > 0) {
-                    this.speakers[speakerIndex] = currentSpeaker;
-                }
-            }
-        }
+        return new Observable<Speaker>(observer => {
+            this.onSaveSpeaker(currentSpeaker).subscribe(speaker => {
+                    observer.next(speaker);
+                    observer.complete();
+                },
+                error => {
+                    observer.next(<any>error);
+                    observer.complete();
+                });
+        });
     }
 
     private loadSpeakers(): Observable<Speaker[]> {
         return this.http.get(this.constants.speakersApi, this.httpHelperService.getAuthRequestOptionsArg())
             .map(this.extractData)
-            .catch(this.handleError);
+            .catch(this.handleSpeakersError);
     }
+
+    private loadSpeaker(id: number): Observable<Speaker> {
+        return this.http.get(this.constants.speakersApi + '/' + id, this.httpHelperService.getAuthRequestOptionsArg())
+            .map(this.extractData)
+            .catch(this.handleSpeakerError);
+    }
+
+    private onSaveSpeaker(currentSpeaker: Speaker): Observable<Speaker> {
+
+        return this.http.post(this.constants.speakersApi, JSON.stringify(currentSpeaker), this.httpHelperService.getAuthRequestOptionsArg('json'))
+            .map(this.extractData)
+            .catch(this.handleSpeakerError);
+    }
+
 
     private extractData(res: Response): any[] {
         let body: any = res.json();
         return body || {};
     }
 
-    private handleError(error: any): Observable<Speaker[]> {
+    private handleSpeakersError(error: any): Observable<Speaker[]> {
+        // in a real world app, we might use a remote logging infrastructure
+        // we'd also dig deeper into the error to get a better message
+        let errMsg: any = (error.message) ? error.message :
+            error.status ? `${error.status} - ${error.statusText}` : 'Server error';
+        console.error(errMsg); // log to console instead
+        return Observable.throw(errMsg);
+    }
+
+    private handleSpeakerError(error: any): Observable<Speaker> {
         // in a real world app, we might use a remote logging infrastructure
         // we'd also dig deeper into the error to get a better message
         let errMsg: any = (error.message) ? error.message :

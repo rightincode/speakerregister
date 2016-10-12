@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using sregister_webapi.Models;
@@ -21,32 +18,39 @@ namespace sregister_webapi.Controllers
         {
             var mSpeakerRegister = new SpeakerRepository();
             return mSpeakerRegister.GetSpeakers();
-
         }
 
-        // GET api/values/5
-        //[HttpGet("{id}")]
-        //public string Get(int id)
-        //{
-        //    return "value";
-        //}
+        //GET api/speaker/5
+        [HttpGet("{id}")]
+        public Speaker Get(int id)
+        {
+            var mSpeakerRegister = new SpeakerRepository();
+            return mSpeakerRegister.LoadSpeaker(id);
+        }
 
-        // POST api/values
-        //[HttpPost]
-        //public void Post([FromBody]string value)
-        //{
-        //}
+        // POST api/speaker
+        [HttpPost]
+        public Speaker Post([FromBody]Speaker speaker)
+        {
+            var mSpeakerRegister = new SpeakerRepository();
+            return mSpeakerRegister.SaveSpeaker(speaker);
+        }
 
-        // PUT api/values/5
-        //[HttpPut("{id}")]
-        //public void Put(int id, [FromBody]string value)
-        //{
-        //}
+        // PUT api/speaker/5
+        [HttpPut("{id}")]
+        public Speaker Put(int id, [FromBody]Speaker speaker)
+        {
+            var mSpeakerRegister = new SpeakerRepository();
+            speaker.Id = id;
+            return mSpeakerRegister.SaveSpeaker(speaker);
+        }
 
         // DELETE api/values/5
-        //[HttpDelete("{id}")]
-        //public void Delete(int id)
-        //{
-        //}
+        [HttpDelete("{id}")]
+        public bool Delete(int id)
+        {
+            var mSpeakerRegister = new SpeakerRepository();
+            return mSpeakerRegister.DeleteSpeaker(id);
+        }
     }
 }

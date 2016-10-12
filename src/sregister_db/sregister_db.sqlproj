@@ -8,7 +8,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectVersion>4.1</ProjectVersion>
     <ProjectGuid>{6a1acb54-7677-4757-afd5-088a40504172}</ProjectGuid>
-    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql130DatabaseSchemaProvider</DSP>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql120DatabaseSchemaProvider</DSP>
     <OutputType>Database</OutputType>
     <RootPath>
     </RootPath>
@@ -57,5 +57,21 @@
   <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
   <ItemGroup>
     <Folder Include="Properties" />
+    <Folder Include="Tables" />
+    <Folder Include="StoredProcedures" />
+    <Folder Include="StoredProcedures\Speaker" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="Tables\Speaker.sql" />
+    <Build Include="StoredProcedures\Speaker\GetSpeakers.sql" />
+    <Build Include="StoredProcedures\Speaker\LoadSpeaker.sql" />
+    <Build Include="StoredProcedures\Speaker\SaveSpeaker.sql" />
+    <Build Include="StoredProcedures\Speaker\DeleteSpeaker.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="sregister_db.publish.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <RefactorLog Include="sregister_db.refactorlog" />
   </ItemGroup>
 </Project>
