@@ -43,7 +43,7 @@ gulp.task('moveToLibs', function (done) {
     //    .pipe(gulp.dest('./wwwroot/libs/rxjs'));
     //gulp.src(['node_modules/angular2-jwt/**/*'], { base: 'node_modules/angular2-jwt' })
     //    .pipe(gulp.dest('./wwwroot/libs/angular2-jwt'));
-    gulp.src(['node_modules/**/*'], { base: '.'})
+    gulp.src(['node_modules/**/*.js'], { base: '.'})
         .pipe(gulp.dest('./wwwroot/libs'));
 
     gulp.src([
