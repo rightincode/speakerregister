@@ -12,45 +12,47 @@ namespace sregister_webapi.Controllers
     [Authorize]
     public class SpeakersController : Controller
     {
+        private readonly ISpeakerRepository _speakerRepository;
+
+        public SpeakersController(ISpeakerRepository speakerRepository)
+        {
+            _speakerRepository = speakerRepository;
+        }
+
         // GET: api/speakers
         [HttpGet]
         public IEnumerable<Speaker> Get()
         {
-            var mSpeakerRegister = new SpeakerRepository();
-            return mSpeakerRegister.GetSpeakers();
+            return _speakerRepository.GetSpeakers();
         }
 
         //GET api/speaker/5
         [HttpGet("{id}")]
         public Speaker Get(int id)
         {
-            var mSpeakerRegister = new SpeakerRepository();
-            return mSpeakerRegister.LoadSpeaker(id);
+            return _speakerRepository.LoadSpeaker(id);
         }
 
         // POST api/speaker
         [HttpPost]
         public Speaker Post([FromBody]Speaker speaker)
         {
-            var mSpeakerRegister = new SpeakerRepository();
-            return mSpeakerRegister.SaveSpeaker(speaker);
+            return _speakerRepository.SaveSpeaker(speaker);
         }
 
         // PUT api/speaker/5
         [HttpPut("{id}")]
         public Speaker Put(int id, [FromBody]Speaker speaker)
         {
-            var mSpeakerRegister = new SpeakerRepository();
             speaker.Id = id;
-            return mSpeakerRegister.SaveSpeaker(speaker);
+            return _speakerRepository.SaveSpeaker(speaker);
         }
 
         // DELETE api/values/5
         [HttpDelete("{id}")]
         public bool Delete(int id)
         {
-            var mSpeakerRegister = new SpeakerRepository();
-            return mSpeakerRegister.DeleteSpeaker(id);
+            return _speakerRepository.DeleteSpeaker(id);
         }
     }
 }

@@ -7,7 +7,7 @@ using sregister_webapi.Models;
 
 namespace sregister_webapi.Repositorities
 {
-    public class SpeakerRepository
+    public class SpeakerRepository : ISpeakerRepository
     {
         private string dbConnStr =
             "Data Source=RTWORKLAPTOP\\DEVDBLOCAL;Initial Catalog=SRegisterDB;Integrated Security=True;Persist Security Info=False;Pooling=False;MultipleActiveResultSets=False;Connect Timeout=60;Encrypt=False;TrustServerCertificate=True";
