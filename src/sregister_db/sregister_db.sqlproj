@@ -60,6 +60,7 @@
     <Folder Include="Tables" />
     <Folder Include="StoredProcedures" />
     <Folder Include="StoredProcedures\Speaker" />
+    <Folder Include="StoredProcedures\Conference" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="Tables\Speaker.sql" />
@@ -67,6 +68,11 @@
     <Build Include="StoredProcedures\Speaker\LoadSpeaker.sql" />
     <Build Include="StoredProcedures\Speaker\SaveSpeaker.sql" />
     <Build Include="StoredProcedures\Speaker\DeleteSpeaker.sql" />
+    <Build Include="Tables\Conference.sql" />
+    <Build Include="StoredProcedures\Conference\GetConferences.sql" />
+    <Build Include="StoredProcedures\Conference\LoadConference.sql" />
+    <Build Include="StoredProcedures\Conference\SaveConference.sql" />
+    <Build Include="StoredProcedures\Conference\DeleteConference.sql" />
   </ItemGroup>
   <ItemGroup>
     <None Include="sregister_db.publish.xml" />
