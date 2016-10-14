@@ -1,7 +1,6 @@
 ﻿import { Injectable } from '@angular/core';
-import { Response } from '@angular/http';
+import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
-import { Http } from '@angular/http';
 
 import { Speaker } from './speaker';
 import { Constants } from '../config/constants';

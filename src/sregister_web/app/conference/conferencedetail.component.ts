@@ -11,6 +11,8 @@ import { ConferenceService } from './conference.service';
 export class ConferenceDetailComponent implements OnInit, OnDestroy {
 
     private sub: any;
+    private loadConferenceSub: any;
+    private updateConferenceSub: any;
 
     currentConferenceId: number;
     currentConference: Conference;
@@ -24,9 +26,9 @@ export class ConferenceDetailComponent implements OnInit, OnDestroy {
     ngOnInit() {
         this.sub = this.route.params.subscribe(params => {
             this.currentConferenceId = +params['id'];
+            this.currentConference = new Conference();
 
             if (this.currentConferenceId <= 0) {
-                this.currentConference = new Conference();
                 this.currentConference.id = this.currentConferenceId;
                 this.saveBtnText = 'Save';
             } else {
@@ -37,16 +39,30 @@ export class ConferenceDetailComponent implements OnInit, OnDestroy {
     }
 
     ngOnDestroy() {
-        this.sub.unsubscribe();
+
+        if (this.sub) {
+            this.sub.unsubscribe();    
+        }
+
+        if (this.loadConferenceSub) {
+            this.loadConferenceSub.unsubscribe();    
+        }
+
+        if (this.updateConferenceSub) {
+            this.updateConferenceSub.unsubscribe();
+        }
     }
 
     loadConference(currentConferenceId: number) {
-        this.currentConference = this.conferenceService.getConferenceById(currentConferenceId);
+        this.loadConferenceSub = this.conferenceService.getConferenceById(currentConferenceId)
+                                    .subscribe(conference => { this.currentConference = conference },
+                                        error => { /* do nothing for now */ });
     }
 
     updateConference(currentConference: Conference) {
-        this.conferenceService.saveConference(currentConference);
-        this.gotoConferences();
+        this.updateConferenceSub = this.conferenceService.saveConference(currentConference)
+                                    .subscribe(Conference => { this.gotoConferences(); },
+                                        error => { /* do nothing for now */ });
     }
 
     gotoConferences() {
