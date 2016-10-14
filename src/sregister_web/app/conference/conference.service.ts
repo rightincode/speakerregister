@@ -2,26 +2,25 @@
 import { Http, Response, Headers, URLSearchParams } from '@angular/http';
 import { Observable }     from 'rxjs/Observable';
 
-import { Conference }        from './conference';
+import { Conference } from './conference';
+import { Constants } from '../config/constants';
+
+import { HttpHelperService } from '../services/httphelper/httphelper.service';
 
 @Injectable()
 
 export class ConferenceService {
 
-    private conferencesUrl = 'app/testdata/conferences.json';  // url to web API
     private conferences: Conference[];
 
     errorMessage: string;
 
-    constructor(private http: Http) {
-        this.loadConferences()
-            .subscribe(
-            conferences => this.conferences = conferences,
-            error => this.errorMessage = <any>error);
+    constructor(private http: Http, private constants: Constants, private httpHelperService: HttpHelperService) {
+        
     }
 
-    getConferences(): Conference[] {
-        return this.conferences;
+    getConferences(): Observable<Conference[]> {
+        return this.loadConferences();
     }
 
     getConferenceById(id: number): Conference {
@@ -49,14 +48,14 @@ export class ConferenceService {
     }
 
     private loadConferences(): Observable<Conference[]> {
-        return this.http.get(this.conferencesUrl)
+        return this.http.get(this.constants.conferenceApi, this.httpHelperService.getAuthRequestOptionsArg())
             .map(this.extractData)
             .catch(this.handleError);
     }
 
     private extractData(res: Response): any[] {
         let body: any = res.json();
-        return body.data || {};
+        return body || {};
     }
 
     private handleError(error: any): Observable<Conference[]> {

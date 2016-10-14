@@ -14,6 +14,8 @@ export class Constants {
 
     public speakersApi: string = 'http://localhost:2353/api/speakers';
 
+    public conferenceApi: string = 'http://localhost:2353/api/conferences';
+
     constructor() {
         this.clientCredentialTokenPostBody = new URLSearchParams();
         this.clientCredentialTokenPostBody.append('grant_type', 'client_credentials');

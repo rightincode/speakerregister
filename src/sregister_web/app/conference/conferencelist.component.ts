@@ -26,7 +26,9 @@ export class ConferenceListComponent implements OnInit {
     }
 
     onGetConferences() {
-        this.conferences = this.conferenceService.getConferences();
+        this.conferenceService.getConferences()
+            .subscribe(conferences => { this.conferences = conferences },
+                error => { this.errorMessage = error} );
     }
 
     onAddConference() {
