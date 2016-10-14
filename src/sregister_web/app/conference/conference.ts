@@ -7,5 +7,7 @@
     public endDate: Date;
     public city: string;
     public state: string;
+    public startDateStr: string;
+    public endDateStr: string;
 
 }
