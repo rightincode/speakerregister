@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using sregister_webapi.Models;
 
-namespace sregister_webapi.Repositorities
+namespace sregister_webapi.Interfaces
 {
     public interface ISpeakerRepository
     {

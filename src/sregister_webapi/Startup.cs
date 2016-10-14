@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using sregister_webapi.Interfaces;
 using sregister_webapi.Repositorities;
 
 namespace sregister_webapi
@@ -31,6 +32,7 @@ namespace sregister_webapi
 
             // adding custom services
             services.AddTransient<ISpeakerRepository, SpeakerRepository>();
+            services.AddTransient<IConferenceRepository, ConferenceRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
