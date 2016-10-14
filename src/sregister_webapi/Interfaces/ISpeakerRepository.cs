@@ -5,7 +5,7 @@ namespace sregister_webapi.Interfaces
 {
     public interface ISpeakerRepository
     {
-        List<Speaker> GetSpeakers();
+        IEnumerable<Speaker> GetSpeakers();
 
         Speaker LoadSpeaker(int id);
 

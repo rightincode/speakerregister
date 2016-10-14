@@ -13,14 +13,14 @@ namespace sregister_webapi.Repositorities
         private string dbConnStr =
             "Data Source=RTWORKLAPTOP\\DEVDBLOCAL;Initial Catalog=SRegisterDB;Integrated Security=True;Persist Security Info=False;Pooling=False;MultipleActiveResultSets=False;Connect Timeout=60;Encrypt=False;TrustServerCertificate=True";
 
-        public List<Speaker> GetSpeakers()
+        public IEnumerable<Speaker> GetSpeakers()
         {
-            List<Speaker> speakerList;
+            IEnumerable<Speaker> speakerList;
 
             using (IDbConnection db = new SqlConnection(dbConnStr))
             {
                 speakerList =
-                    db.Query<Speaker>("GetSpeakers", null, null, false, 60, CommandType.StoredProcedure).AsList();
+                    db.Query<Speaker>("GetSpeakers", null, null, false, 60, CommandType.StoredProcedure);
 
             }
             return speakerList;
