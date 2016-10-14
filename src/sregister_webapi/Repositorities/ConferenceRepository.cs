@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
-using System.Threading.Tasks;
 using Dapper;
 using sregister_webapi.Interfaces;
 using sregister_webapi.Models;
@@ -22,7 +20,7 @@ namespace sregister_webapi.Repositorities
             using (IDbConnection db = new SqlConnection(dbConnStr))
             {
                 conferenceList =
-                    db.Query<Conference>("GetConferences", null, null, false, 60, CommandType.StoredProcedure).AsList(); ;
+                    db.Query<Conference>("GetConferences", null, null, false, 60, CommandType.StoredProcedure).AsList();
 
             }
             return conferenceList;
