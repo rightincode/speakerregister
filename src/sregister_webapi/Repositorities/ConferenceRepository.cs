@@ -22,7 +22,7 @@ namespace sregister_webapi.Repositorities
             using (IDbConnection db = new SqlConnection(dbConnStr))
             {
                 conferenceList =
-                    db.Query<Conference>("GetConferences", null, null, false, 60, CommandType.StoredProcedure);
+                    db.Query<Conference>("GetConferences", null, null, false, 60, CommandType.StoredProcedure).AsList(); ;
 
             }
             return conferenceList;

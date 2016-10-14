@@ -20,7 +20,7 @@ namespace sregister_webapi.Repositorities
             using (IDbConnection db = new SqlConnection(dbConnStr))
             {
                 speakerList =
-                    db.Query<Speaker>("GetSpeakers", null, null, false, 60, CommandType.StoredProcedure);
+                    db.Query<Speaker>("GetSpeakers", null, null, false, 60, CommandType.StoredProcedure).AsList();
 
             }
             return speakerList;
