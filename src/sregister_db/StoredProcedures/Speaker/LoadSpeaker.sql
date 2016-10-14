@@ -12,5 +12,5 @@ AS
 	, [EmailAddress]
 	, [PhoneNumber]
 	FROM Speaker
-	WHERE Id = @Id
+	WHERE Id = @Id AND [Deleted] = 0
 RETURN 0

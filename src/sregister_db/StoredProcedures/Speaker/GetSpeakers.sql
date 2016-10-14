@@ -11,4 +11,5 @@ AS
 	, [EmailAddress]
 	, [PhoneNumber]
 	FROM Speaker
+	WHERE [Deleted] = 0
 RETURN 0

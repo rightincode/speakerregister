@@ -4,8 +4,8 @@ AS
 BEGIN TRY
 	BEGIN TRANSACTION
 
-		DELETE 
-		FROM dbo.Speaker
+		UPDATE dbo.Speaker
+		SET [Deleted] = 1
 		WHERE Id = @Id
 
 	COMMIT TRANSACTION

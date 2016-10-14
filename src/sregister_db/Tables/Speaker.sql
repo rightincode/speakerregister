@@ -10,5 +10,6 @@
     [Zipcode] NVARCHAR(50) NOT NULL, 
     [EmailAddress] NVARCHAR(450) NOT NULL, 
     [PhoneNumber] NVARCHAR(100) NOT NULL, 
+    [Deleted] BIT NOT NULL DEFAULT 0, 
     CONSTRAINT [PK_Speaker] PRIMARY KEY ([Id])
 )
