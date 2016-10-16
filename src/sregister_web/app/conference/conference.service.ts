@@ -1,6 +1,7 @@
 ﻿import { Injectable }     from '@angular/core';
 import { Http, Response } from '@angular/http';
-import { Observable }     from 'rxjs/Observable';
+import { Observable } from 'rxjs/Observable';
+import * as Moment from 'moment/moment';
 
 import { Conference } from './conference';
 import { Constants } from '../config/constants';
@@ -12,9 +13,8 @@ import { HttpHelperService } from '../services/httphelper/httphelper.service';
 export class ConferenceService {
 
     private conferences: Conference[];
-
     errorMessage: string;
-
+    
     constructor(private http: Http, private constants: Constants, private httpHelperService: HttpHelperService) {
         
     }
@@ -25,11 +25,15 @@ export class ConferenceService {
 
     getConferenceById(id: number): Observable<Conference> {
         return this.http.get(this.constants.conferenceApi + '/' + id, this.httpHelperService.getAuthRequestOptionsArg())
-            .map(this.extractData)
+            .map(this.extractConferenceData)
             .catch(this.handleConferenceError);
     }
 
     saveConference(currentConference: Conference): Observable<Conference> {
+
+        currentConference.startDate = new Date(currentConference.startDateStr);
+        currentConference.endDate = new Date(currentConference.endDateStr);
+
         return this.onSaveConference(currentConference);
     }
 
@@ -48,6 +52,27 @@ export class ConferenceService {
     private extractData(res: Response): any[] {
         let body: any = res.json();
         return body || {};
+    }
+
+    private extractConferenceData(res: Response): Conference {
+        let conference = new Conference();
+        let body: Conference = res.json();
+
+        if (body) {
+            conference.id = body.id;
+            conference.name = body.name;
+            conference.location = body.location;
+            conference.startDate = new Date(body.startDate);
+            conference.startDateStr = Moment.utc(conference.startDate).format('YYYY-MM-DD');
+            conference.endDate = new Date(body.endDate);
+            conference.endDateStr = Moment.utc(conference.endDate).format('YYYY-MM-DD');
+            conference.city = body.city;
+            conference.state = body.state;
+
+            return conference;
+        } else {
+            return new Conference();
+        }
     }
 
     private handleError(error: any): Observable<Conference[]> {
