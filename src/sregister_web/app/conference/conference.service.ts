@@ -31,34 +31,59 @@ export class ConferenceService {
 
     saveConference(currentConference: Conference): Observable<Conference> {
 
-        currentConference.startDate = new Date(currentConference.startDateStr);
-        currentConference.endDate = new Date(currentConference.endDateStr);
+        currentConference.startDate = Moment(currentConference.startDateStr).utc().toDate();
+        currentConference.endDate = Moment(currentConference.endDateStr).utc().toDate();
 
         return this.onSaveConference(currentConference);
     }
 
     private loadConferences(): Observable<Conference[]> {
         return this.http.get(this.constants.conferenceApi, this.httpHelperService.getAuthRequestOptionsArg())
-            .map(this.extractData)
+            .map(this.extractConferenceListData)
             .catch(this.handleError);
     }
 
     private onSaveConference(currentConference: Conference): Observable<Conference> {
         return this.http.post(this.constants.conferenceApi, JSON.stringify(currentConference), this.httpHelperService.getAuthRequestOptionsArg('json'))
-            .map(this.extractData)
+            .map(this.extractConferenceData)
             .catch(this.handleConferenceError);
     }
 
-    private extractData(res: Response): any[] {
+    private extractConferenceListData(res: Response): Conference[] {
         let body: any = res.json();
-        return body || {};
+        let conferenceList: Conference[] = [];
+
+        if (body) {
+            for (let x: number = 0; x < body.length; x++) {
+
+                let conference = new Conference();
+
+                conference.id = body[x].id;
+                conference.name = body[x].name;
+                conference.location = body[x].location;
+                conference.startDate = new Date(body[x].startDate);
+                conference.startDateStr = Moment.utc(conference.startDate).format('MM/DD/YYYY');
+                conference.endDate = new Date(body[x].endDate);
+                conference.endDateStr = Moment.utc(conference.endDate).format('MM/DD/YYYY');
+                conference.city = body[x].city;
+                conference.state = body[x].state;
+
+                conferenceList.push(conference);
+            }
+
+            return conferenceList;
+        } else {
+            return [];
+        }
     }
 
     private extractConferenceData(res: Response): Conference {
-        let conference = new Conference();
         let body: Conference = res.json();
 
         if (body) {
+
+            let conference = new Conference();
+
             conference.id = body.id;
             conference.name = body.name;
             conference.location = body.location;

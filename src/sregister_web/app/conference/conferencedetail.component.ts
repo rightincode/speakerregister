@@ -57,7 +57,6 @@ export class ConferenceDetailComponent implements OnInit, OnDestroy {
         this.loadConferenceSub = this.conferenceService.getConferenceById(currentConferenceId)
                                     .subscribe(conference => {
                                         this.currentConference = conference;
-                                        //this.setConferenceDateStrings();
                                         },
                                     error => { /* do nothing for now */ });
     }
@@ -72,15 +71,4 @@ export class ConferenceDetailComponent implements OnInit, OnDestroy {
     gotoConferences() {
         this.router.navigate(['/conferencemanagement']);
     }
-
-    //may move this to a reusable service
-    //private setConferenceDateStrings() {
-    //    this.currentConference.startDateStr = this.currentConference.startDate.format('yyyy-MM-dd');
-    //    this.currentConference.endDateStr = this.currentConference.endDate.format('yyyy-MM-dd');
-    //}
-
-    //private setConferenceDataValues() {
-    //    this.currentConference.startDate = new Date(this.currentConference.startDateStr);
-    //    this.currentConference.endDate = new Date(this.currentConference.endDateStr);
-    //}
 }
