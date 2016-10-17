@@ -25,7 +25,9 @@ export class SpeakerListComponent implements OnInit, OnDestroy {
     }
 
     ngOnDestroy() {
-        this.speakerServiceSub.unsubscribe();
+        if (this.speakerServiceSub) {
+            this.speakerServiceSub.unsubscribe();    
+        }
     }
 
     onSelect(speaker: Speaker) {
@@ -34,13 +36,8 @@ export class SpeakerListComponent implements OnInit, OnDestroy {
 
     onGetSpeakers() {
         this.speakerServiceSub = this.speakerService.getSpeakers()
-            .subscribe(speakers => {
-                    this.speakers = speakers;
-                },
-                (error) => {
-                    this.errorMessage = error;
-                }
-            );
+            .subscribe(speakers => { this.speakers = speakers; },
+                error => { this.errorMessage = error; });
     };
 
     onAddSpeaker() {

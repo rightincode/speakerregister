@@ -70,11 +70,9 @@ export class ConferenceService {
 
                 conferenceList.push(conference);
             }
-
-            return conferenceList;
-        } else {
-            return [];
         }
+
+        return conferenceList;
     }
 
     private extractConferenceData(res: Response): Conference {
