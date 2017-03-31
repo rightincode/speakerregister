@@ -12,8 +12,7 @@ import { conferenceRouting } from './conference.routing';
 @NgModule({
     imports: [CommonModule, FormsModule, conferenceRouting],
     declarations: [ConferenceComponent, ConferenceListComponent, ConferenceDetailComponent],
-    providers: [ConferenceService],
-    exports: [ConferenceComponent, ConferenceListComponent, ConferenceDetailComponent]
+    providers: [ConferenceService]
 })
 export class ConferenceModule {
 
