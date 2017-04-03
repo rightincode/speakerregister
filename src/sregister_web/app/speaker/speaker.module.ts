@@ -12,8 +12,7 @@ import { speakerRouting } from './speaker.routing';
 @NgModule({
     imports: [CommonModule, FormsModule, speakerRouting],
     declarations: [SpeakerRegisterHomeComponent, SpeakerListComponent, SpeakerDetailComponent],
-    providers: [SpeakerService],
-    exports: [SpeakerRegisterHomeComponent, SpeakerListComponent, SpeakerDetailComponent]
+    providers: [SpeakerService]    
 })
 export class SpeakerModule {
 
