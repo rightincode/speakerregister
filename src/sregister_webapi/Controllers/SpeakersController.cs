@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Net.Http;
+using System.Collections.Generic;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using sregister_webapi.Interfaces;
@@ -26,21 +27,21 @@ namespace sregister_webapi.Controllers
             return _speakerRepository.GetSpeakers();
         }
 
-        //GET api/speaker/5
+        //GET api/speakers/5
         [HttpGet("{id}")]
         public Speaker Get(int id)
         {
             return _speakerRepository.LoadSpeaker(id);
         }
 
-        // POST api/speaker
+        // POST api/speakers
         [HttpPost]
         public Speaker Post([FromBody]Speaker speaker)
         {
             return _speakerRepository.SaveSpeaker(speaker);
         }
 
-        // PUT api/speaker/5
+        // PUT api/speakers/5
         [HttpPut("{id}")]
         public Speaker Put(int id, [FromBody]Speaker speaker)
         {
@@ -48,11 +49,17 @@ namespace sregister_webapi.Controllers
             return _speakerRepository.SaveSpeaker(speaker);
         }
 
-        // DELETE api/values/5
+        // DELETE api/speakers/5
         [HttpDelete("{id}")]
         public bool Delete(int id)
         {
             return _speakerRepository.DeleteSpeaker(id);
+        }
+        
+        // PUT api/speaker/5/register
+        [HttpPut("{id}/register")]
+        public HttpResponseMessage Register(int id) {
+            return new HttpResponseMessage { StatusCode = System.Net.HttpStatusCode.NotImplemented };
         }
     }
 }
