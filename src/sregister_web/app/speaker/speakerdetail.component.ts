@@ -27,7 +27,7 @@ export class SpeakerDetailComponent implements OnInit, OnDestroy {
     ngOnInit() {
         this.sub = this.route.paramMap.switchMap((params: ParamMap) =>
             params.get('id')).subscribe(param => {
-                this.currentSpeakerId = parseInt(param);
+                this.currentSpeakerId = parseInt(param) ? parseInt(param) : 0;
                 this.currentSpeaker = new Speaker();
 
                 if (this.currentSpeakerId <= 0) {
@@ -38,6 +38,21 @@ export class SpeakerDetailComponent implements OnInit, OnDestroy {
                     this.loadSpeaker(this.currentSpeakerId);
                 }
             });
+
+        //use if there is no change the id parameter will change while the componenet is loaded
+
+        //let param = this.route.snapshot.paramMap.get('id');
+
+        //this.currentSpeakerId = parseInt(param) ? parseInt(param) : 0;
+        //this.currentSpeaker = new Speaker();
+
+        //if (this.currentSpeakerId <= 0) {
+        //    this.currentSpeaker.id = this.currentSpeakerId;
+        //    this.saveBtnText = 'Save';
+        //} else {
+        //    this.saveBtnText = 'Update';
+        //    this.loadSpeaker(this.currentSpeakerId);
+        //}
     }
 
     ngOnDestroy() {

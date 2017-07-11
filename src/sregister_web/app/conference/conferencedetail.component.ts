@@ -26,7 +26,7 @@ export class ConferenceDetailComponent implements OnInit, OnDestroy {
     ngOnInit() {
         this.sub = this.route.paramMap.switchMap((params: ParamMap) =>
             params.get('id')).subscribe(param => {
-                this.currentConferenceId = parseInt(param);
+                this.currentConferenceId = parseInt(param) ? parseInt(param) : 0;
                 this.currentConference = new Conference();
 
                 if (this.currentConferenceId <= 0) {
@@ -37,6 +37,21 @@ export class ConferenceDetailComponent implements OnInit, OnDestroy {
                     this.loadConference(this.currentConferenceId);
                 }
             });
+
+        //use if there is no change the id parameter will change while the componenet is loaded
+
+        //let param = this.route.snapshot.paramMap.get('id');
+
+        //this.currentConferenceId = parseInt(param) ? parseInt(param) : 0;
+        //this.currentConference = new Conference();
+
+        //if (this.currentConferenceId <= 0) {
+        //    this.currentConference.id = this.currentConferenceId;
+        //    this.saveBtnText = 'Save';
+        //} else {
+        //    this.saveBtnText = 'Update';
+        //    this.loadConference(this.currentConferenceId);
+        //}
     }
 
     ngOnDestroy() {
