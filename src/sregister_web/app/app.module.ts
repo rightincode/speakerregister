@@ -17,10 +17,10 @@ import { HttpHelperService } from './services/httphelper/httphelper.service';
 import { Constants } from './config/constants';
 
 /* Routing */
-import { routing, appRouterProviders } from './app.routing';
+import { AppRoutingModule, appRouterProviders } from './app.routing';
 
 @NgModule({
-    imports: [BrowserModule, HttpModule, JsonpModule, ConferenceModule, SpeakerModule, routing],
+    imports: [BrowserModule, HttpModule, JsonpModule, ConferenceModule, SpeakerModule, AppRoutingModule],
     declarations: [AppComponent, PageNotFoundComponent],
     providers: [appRouterProviders, TokenService, Constants, HttpHelperService],
     bootstrap: [AppComponent]

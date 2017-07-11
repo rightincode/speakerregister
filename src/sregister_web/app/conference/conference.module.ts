@@ -7,10 +7,10 @@ import { ConferenceListComponent } from './conferencelist.component';
 import { ConferenceDetailComponent } from './conferencedetail.component';
 import { ConferenceService } from './conference.service';
 
-import { conferenceRouting } from './conference.routing';
+import { ConferenceRoutingModule } from './conference.routing';
 
 @NgModule({
-    imports: [CommonModule, FormsModule, conferenceRouting],
+    imports: [CommonModule, FormsModule, ConferenceRoutingModule],
     declarations: [ConferenceComponent, ConferenceListComponent, ConferenceDetailComponent],
     providers: [ConferenceService]
 })

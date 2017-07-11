@@ -7,10 +7,10 @@ import { SpeakerListComponent } from './speakerlist.component';
 import { SpeakerDetailComponent } from './speakerdetail.component';
 import { SpeakerService } from './speaker.service';
 
-import { speakerRouting } from './speaker.routing';
+import { SpeakerRoutingModule } from './speaker.routing';
 
 @NgModule({
-    imports: [CommonModule, FormsModule, speakerRouting],
+    imports: [CommonModule, FormsModule, SpeakerRoutingModule],
     declarations: [SpeakerRegisterHomeComponent, SpeakerListComponent, SpeakerDetailComponent],
     providers: [SpeakerService]    
 })

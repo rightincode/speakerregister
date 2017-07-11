@@ -1,5 +1,5 @@
 ﻿import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router'
+import { Router, ActivatedRoute, ParamMap } from '@angular/router'
 
 import { Speaker }        from './speaker';
 import { SpeakerService } from './speaker.service';
@@ -25,19 +25,19 @@ export class SpeakerDetailComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit() {
-        this.sub = this.route.params.subscribe(params => {
-            this.currentSpeakerId = +params['id'];
+        this.sub = this.route.paramMap.switchMap((params: ParamMap) =>
+            params.get('id')).subscribe(param => {
+                this.currentSpeakerId = parseInt(param);
+                this.currentSpeaker = new Speaker();
 
-            this.currentSpeaker = new Speaker();
-
-            if (this.currentSpeakerId <= 0) {
-                this.currentSpeaker.id = this.currentSpeakerId;
-                this.saveBtnText = 'Save';
-            } else {
-                this.saveBtnText = 'Update';
-                this.loadSpeaker(this.currentSpeakerId);    
-            }
-        });
+                if (this.currentSpeakerId <= 0) {
+                    this.currentSpeaker.id = this.currentSpeakerId;
+                    this.saveBtnText = 'Save';
+                } else {
+                    this.saveBtnText = 'Update';
+                    this.loadSpeaker(this.currentSpeakerId);
+                }
+            });
     }
 
     ngOnDestroy() {

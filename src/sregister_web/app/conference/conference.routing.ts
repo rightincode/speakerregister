@@ -1,4 +1,5 @@
-﻿import { Routes, RouterModule } from '@angular/router';
+﻿import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
 
 import { ConferenceComponent } from './conference.component';
 import { ConferenceListComponent } from './conferencelist.component';
@@ -9,10 +10,18 @@ const routes: Routes = [
         path: 'conferencemanagement',
         component: ConferenceComponent,
         children: [
-            { path: '', component: ConferenceListComponent },
+            { path: '', component: ConferenceListComponent, pathMatch: "full" },
             { path: ':id', component: ConferenceDetailComponent }
         ]
     }
 ];
 
-export const conferenceRouting = RouterModule.forChild(routes);
+@NgModule({
+    imports: [
+        RouterModule.forChild(routes)
+    ],
+    exports: [
+        RouterModule
+    ]
+})
+export class ConferenceRoutingModule { }

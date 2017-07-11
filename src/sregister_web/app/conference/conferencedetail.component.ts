@@ -1,5 +1,5 @@
 ﻿import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router'
+import { Router, ActivatedRoute, ParamMap } from '@angular/router'
 
 import { Conference } from './conference';
 import { ConferenceService } from './conference.service';
@@ -24,18 +24,19 @@ export class ConferenceDetailComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit() {
-        this.sub = this.route.params.subscribe(params => {
-            this.currentConferenceId = +params['id'];
-            this.currentConference = new Conference();
+        this.sub = this.route.paramMap.switchMap((params: ParamMap) =>
+            params.get('id')).subscribe(param => {
+                this.currentConferenceId = parseInt(param);
+                this.currentConference = new Conference();
 
-            if (this.currentConferenceId <= 0) {
-                this.currentConference.id = this.currentConferenceId;
-                this.saveBtnText = 'Save';
-            } else {
-                this.saveBtnText = 'Update';
-                this.loadConference(this.currentConferenceId);
-            }
-        });
+                if (this.currentConferenceId <= 0) {
+                    this.currentConference.id = this.currentConferenceId;
+                    this.saveBtnText = 'Save';
+                } else {
+                    this.saveBtnText = 'Update';
+                    this.loadConference(this.currentConferenceId);
+                }
+            });
     }
 
     ngOnDestroy() {
