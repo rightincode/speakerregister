@@ -7,6 +7,7 @@ import { ConferenceDetailComponent } from './conferencedetail.component';
 
 const routes: Routes = [
     {
+        //path: '', //for lazyloading
         path: 'conferencemanagement',
         component: ConferenceComponent,
         children: [

@@ -6,6 +6,7 @@ import { ContactUsComponent } from './contactus-component';
 import { PageNotFoundComponent } from './pagenotfound.component';
 
 const routes: Routes = [
+    //{ path: 'conferencemanagement', loadChildren: 'app/conference/conference.module#ConferenceModule'}, //for lazyloading
     { path: 'home', component: SpeakerRegisterHomeComponent },
     //{ path: 'compose', component: ContactUsComponent },
     { path: '', redirectTo: '/home', pathMatch: 'full' },
