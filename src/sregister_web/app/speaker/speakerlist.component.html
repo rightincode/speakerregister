@@ -12,6 +12,7 @@
         <th>State</th>
     </tr>
     <tr *ngFor="let speaker of speakers"
+        [class.active]="isSelected(speaker)"
         (click)="onSelect(speaker)">
         <td>{{ speaker.id }}</td>
         <td>{{ speaker.firstName }}</td>

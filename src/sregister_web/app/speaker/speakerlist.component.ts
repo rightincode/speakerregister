@@ -1,5 +1,5 @@
 ﻿import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 
 import { Speaker } from './speaker';
@@ -12,16 +12,22 @@ import { SpeakerService } from './speaker.service';
 export class SpeakerListComponent implements OnInit, OnDestroy {
 
     private speakerServiceSub: any;
+    private selectedSpeakerId: number;
 
     errorMessage: string;
     speakers: Speaker[];
 
     constructor(private speakerService: SpeakerService,
-                private router: Router) {
+        private router: Router,
+        private route: ActivatedRoute) {
     }
     
     ngOnInit() {
+
+        let speakerIdParam = this.route.snapshot.paramMap.get('id');
+        this.selectedSpeakerId = parseInt(speakerIdParam) ? parseInt(speakerIdParam) : 0;
         this.onGetSpeakers();
+
     }
 
     ngOnDestroy() {
@@ -42,5 +48,9 @@ export class SpeakerListComponent implements OnInit, OnDestroy {
 
     onAddSpeaker() {
         this.router.navigate(['/speakerdetail', 0]);
+    }
+
+    isSelected(speaker: Speaker) {
+        return speaker.id === this.selectedSpeakerId;
     }
 }

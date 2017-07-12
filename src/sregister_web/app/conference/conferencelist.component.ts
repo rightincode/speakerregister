@@ -1,5 +1,5 @@
 ﻿import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
 import { Conference } from './conference';
 import { ConferenceService } from './conference.service';
@@ -10,14 +10,20 @@ import { ConferenceService } from './conference.service';
 
 export class ConferenceListComponent implements OnInit {
 
+    private selectedConferenceId: number;
+
     errorMessage: string;
     conferences: Conference[];
 
     constructor(private conferenceService: ConferenceService,
-        private router: Router) {
+        private router: Router,
+        private route: ActivatedRoute) {
     }
 
     ngOnInit() {
+
+        let conferenceIdParam = this.route.snapshot.paramMap.get('id');
+        this.selectedConferenceId = parseInt(conferenceIdParam) ? parseInt(conferenceIdParam) : 0;
         this.onGetConferences();
     }
 
@@ -33,5 +39,9 @@ export class ConferenceListComponent implements OnInit {
 
     onAddConference() {
         this.router.navigate(['/conferencemanagement', 0]);
+    }
+
+    isSelected(conference: Conference) {
+        return conference.id === this.selectedConferenceId;
     }
 }

@@ -83,6 +83,6 @@ export class SpeakerDetailComponent implements OnInit, OnDestroy {
     }
 
     gotoSpeakers() {
-        this.router.navigate(['/speakerlist']);
+        this.router.navigate(['/speakerlist', { id: this.currentSpeakerId }]);
     }
 }

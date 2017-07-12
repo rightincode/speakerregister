@@ -12,6 +12,7 @@
         <th>State</th>
     </tr>
     <tr *ngFor="let conference of conferences"
+        [class.active]="isSelected(conference)"
         (click)="onSelect(conference)">
         <td>{{ conference.id }}</td>
         <td>{{ conference.name }}</td>
