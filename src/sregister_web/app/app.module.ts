@@ -1,9 +1,11 @@
 ﻿import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+//import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpModule, JsonpModule, Http } from '@angular/http';
 
 /* App Root */
-import { AppComponent }  from './app.component';
+import { AppComponent } from './app.component';
+import { ContactUsComponent } from './contactus-component';
 import { PageNotFoundComponent } from './pagenotfound.component';
 import './rxjs-operators';
 
@@ -21,7 +23,7 @@ import { AppRoutingModule, appRouterProviders } from './app.routing';
 
 @NgModule({
     imports: [BrowserModule, HttpModule, JsonpModule, ConferenceModule, SpeakerModule, AppRoutingModule],
-    declarations: [AppComponent, PageNotFoundComponent],
+    declarations: [AppComponent, ContactUsComponent, PageNotFoundComponent],
     providers: [appRouterProviders, TokenService, Constants, HttpHelperService],
     bootstrap: [AppComponent]
 })

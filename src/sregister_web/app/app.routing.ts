@@ -2,10 +2,12 @@
 import { Routes, RouterModule } from '@angular/router';
 
 import { SpeakerRegisterHomeComponent } from './home/speakerregisterhome.component';
+import { ContactUsComponent } from './contactus-component';
 import { PageNotFoundComponent } from './pagenotfound.component';
 
 const routes: Routes = [
     { path: 'home', component: SpeakerRegisterHomeComponent },
+    //{ path: 'compose', component: ContactUsComponent },
     { path: '', redirectTo: '/home', pathMatch: 'full' },
     { path: '**', component: PageNotFoundComponent }
 ];
