@@ -28,7 +28,7 @@ export class ConferenceListComponent implements OnInit {
     }
 
     onSelect(conference: Conference) {
-        this.router.navigate(['/conferencemanagement', conference.id]);
+        this.router.navigate([conference.id], { relativeTo: this.route });
     }
 
     onGetConferences() {
@@ -38,7 +38,7 @@ export class ConferenceListComponent implements OnInit {
     }
 
     onAddConference() {
-        this.router.navigate(['/conferencemanagement', 0]);
+        this.router.navigate([0], { relativeTo: this.route });
     }
 
     isSelected(conference: Conference) {

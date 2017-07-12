@@ -38,6 +38,7 @@ export class SpeakerListComponent implements OnInit, OnDestroy {
 
     onSelect(speaker: Speaker) {
         this.router.navigate(['/speakerdetail', speaker.id]);
+        //this.router.navigate(['../speakerdetail/' + speaker.id], { relativeTo: this.route });
     }
 
     onGetSpeakers() {
@@ -48,6 +49,7 @@ export class SpeakerListComponent implements OnInit, OnDestroy {
 
     onAddSpeaker() {
         this.router.navigate(['/speakerdetail', 0]);
+        //this.router.navigate(['../speakerdetail/0'], { relativeTo: this.route });
     }
 
     isSelected(speaker: Speaker) {

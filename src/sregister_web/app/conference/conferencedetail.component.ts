@@ -85,6 +85,6 @@ export class ConferenceDetailComponent implements OnInit, OnDestroy {
     }
 
     gotoConferences() {
-        this.router.navigate(['/conferencemanagement', { id: this.currentConferenceId }]);
+        this.router.navigate(['../', { id: this.currentConferenceId }], { relativeTo: this.route });
     }
 }
