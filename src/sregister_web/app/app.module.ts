@@ -12,6 +12,7 @@ import './rxjs-operators';
 /* Feature Modules */
 import { SpeakerModule } from './speaker/speaker.module';
 import { ConferenceModule } from './conference/conference.module';
+import { AdminModule } from './admin/admin.module';
 
 //Shared Services
 import { TokenService } from './services/token/token.service';
@@ -22,7 +23,7 @@ import { Constants } from './config/constants';
 import { AppRoutingModule, appRouterProviders } from './app.routing';
 
 @NgModule({
-    imports: [BrowserModule, HttpModule, JsonpModule, ConferenceModule, SpeakerModule, AppRoutingModule],
+    imports: [BrowserModule, HttpModule, JsonpModule, ConferenceModule, SpeakerModule, AdminModule, AppRoutingModule],
     declarations: [AppComponent, ContactUsComponent, PageNotFoundComponent],
     providers: [appRouterProviders, TokenService, Constants, HttpHelperService],
     bootstrap: [AppComponent]
