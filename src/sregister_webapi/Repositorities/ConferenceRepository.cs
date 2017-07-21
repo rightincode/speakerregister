@@ -5,13 +5,18 @@ using System.Linq;
 using Dapper;
 using sregister_webapi.Interfaces;
 using sregister_webapi.Models;
+using Microsoft.Extensions.Options;
 
 namespace sregister_webapi.Repositorities
 {
     public class ConferenceRepository : IConferenceRepository
     {
-        private string dbConnStr =
-            "Data Source=RTWORKLAPTOP\\DEVDBLOCAL;Initial Catalog=SRegisterDB;Integrated Security=True;Persist Security Info=False;Pooling=False;MultipleActiveResultSets=False;Connect Timeout=60;Encrypt=False;TrustServerCertificate=True";
+        private string dbConnStr;
+        
+        public ConferenceRepository(IOptions<SpeakerRegisterOptions> options)
+        {
+            dbConnStr = options.Value.SRegisterDB;
+        }
 
         public IEnumerable<Conference> GetConferences()
         {
