@@ -11,7 +11,7 @@ namespace sregister_webapi.Repositorities
     public class SpeakerRepository : ISpeakerRepository
     {
         private string dbConnStr =
-            "Data Source=RTWORKLAPTOP\\DEVDBLOCAL;Initial Catalog=SRegisterDB;Integrated Security=True;Persist Security Info=False;Pooling=False;MultipleActiveResultSets=False;Connect Timeout=60;Encrypt=False;TrustServerCertificate=True";
+            "Data Source=RT2-LAPTOP\\MSSQLSVR2014;Initial Catalog=sregister_db;Integrated Security=True;Persist Security Info=False;Pooling=False;MultipleActiveResultSets=False;Connect Timeout=60;Encrypt=False;TrustServerCertificate=True";
 
         public IEnumerable<Speaker> GetSpeakers()
         {
