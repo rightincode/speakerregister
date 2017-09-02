@@ -5,6 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using sregister_webapi.Interfaces;
 using sregister_webapi.Repositorities;
+using sregister_webapi.Models;
 
 namespace sregister_webapi
 {
@@ -29,6 +30,8 @@ namespace sregister_webapi
             services.AddMvc();
 
             services.AddCors();
+            services.AddOptions();
+            services.Configure<SpeakerRegisterOptions>(Configuration.GetSection("Options"));
 
             // adding custom services
             services.AddTransient<ISpeakerRepository, SpeakerRepository>();
