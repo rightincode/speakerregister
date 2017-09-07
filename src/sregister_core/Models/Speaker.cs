@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace sregister_webapi.Models
+namespace sregister_core.Models
 {
     public class Speaker
     {

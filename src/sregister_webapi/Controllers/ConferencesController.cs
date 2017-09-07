@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
-using sregister_webapi.Interfaces;
-using sregister_webapi.Models;
+using sregister_core.Interfaces;
+using sregister_core.Models;
 
 // For more information on enabling Web API for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 

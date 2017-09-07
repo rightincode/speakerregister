@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using sregister_webapi.Models;
+using sregister_core.Models;
 
-namespace sregister_webapi.Interfaces
+namespace sregister_core.Interfaces
 {
     public interface IConferenceRepository
     {

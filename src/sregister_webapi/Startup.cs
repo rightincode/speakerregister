@@ -3,9 +3,9 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using sregister_webapi.Interfaces;
+using sregister_core.Interfaces;
 using sregister_webapi.Repositorities;
-using sregister_webapi.Models;
+using sregister_core.Models;
 
 namespace sregister_webapi
 {
@@ -49,8 +49,7 @@ namespace sregister_webapi
             app.UseIdentityServerAuthentication(new IdentityServerAuthenticationOptions
             {
                 Authority = "http://localhost:9440",
-                ScopeName = "sregisterAPI",
-
+                AllowedScopes = { "sregisterAPI" },
                 RequireHttpsMetadata = false
             });
             

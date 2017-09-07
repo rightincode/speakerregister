@@ -3,8 +3,8 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using Dapper;
-using sregister_webapi.Interfaces;
-using sregister_webapi.Models;
+using sregister_core.Interfaces;
+using sregister_core.Models;
 using Microsoft.Extensions.Options;
 
 namespace sregister_webapi.Repositorities

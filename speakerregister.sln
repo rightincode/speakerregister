@@ -15,6 +15,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "sregister_sec", "src\sregis
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "sregister_db", "src\sregister_db\sregister_db.sqlproj", "{6A1ACB54-7677-4757-AFD5-088A40504172}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "sregister_core", "src\sregister_core\sregister_core.csproj", "{AD470FE5-2E18-4636-A6FF-30E60B00DE6C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{6A1ACB54-7677-4757-AFD5-088A40504172}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6A1ACB54-7677-4757-AFD5-088A40504172}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6A1ACB54-7677-4757-AFD5-088A40504172}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{AD470FE5-2E18-4636-A6FF-30E60B00DE6C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD470FE5-2E18-4636-A6FF-30E60B00DE6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD470FE5-2E18-4636-A6FF-30E60B00DE6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD470FE5-2E18-4636-A6FF-30E60B00DE6C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -48,6 +54,7 @@ Global
 		{A8373507-9836-4AF2-B8D7-322515D13B68} = {9FB79592-9A28-4B7B-99C3-B743558A1988}
 		{D136F1BA-C187-43C7-8DD1-37A5D9178BC2} = {9FB79592-9A28-4B7B-99C3-B743558A1988}
 		{6A1ACB54-7677-4757-AFD5-088A40504172} = {9FB79592-9A28-4B7B-99C3-B743558A1988}
+		{AD470FE5-2E18-4636-A6FF-30E60B00DE6C} = {9FB79592-9A28-4B7B-99C3-B743558A1988}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B8256B57-D4AE-4E4A-819A-D501F74DF655}
