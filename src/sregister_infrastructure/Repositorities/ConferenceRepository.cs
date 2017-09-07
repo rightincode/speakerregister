@@ -7,7 +7,7 @@ using sregister_core.Interfaces;
 using sregister_core.Models;
 using Microsoft.Extensions.Options;
 
-namespace sregister_webapi.Repositorities
+namespace sregister_infrastructure.Repositorities
 {
     public class ConferenceRepository : IConferenceRepository
     {

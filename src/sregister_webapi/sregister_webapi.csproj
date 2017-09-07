@@ -35,6 +35,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\sregister_core\sregister_core.csproj" />
+    <ProjectReference Include="..\sregister_infrastructure\sregister_infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

@@ -4,7 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using sregister_core.Interfaces;
-using sregister_webapi.Repositorities;
+using sregister_infrastructure.Repositorities;
 using sregister_core.Models;
 
 namespace sregister_webapi
