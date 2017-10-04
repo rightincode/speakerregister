@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace sregister_core.Models
@@ -38,58 +37,59 @@ namespace sregister_core.Models
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
             var results = new List<ValidationResult>();
-            results.AddRange(ValidateRequiredFields());
+
+            //added in case we add additional attributes beyond required
+            Validator.TryValidateProperty(this.Id,
+                new ValidationContext(this, null, null) { MemberName = "Id" },
+                results);
+
+            //added in case we add additional attributes beyond required
+            Validator.TryValidateProperty(this.FirstName,
+                new ValidationContext(this, null, null) { MemberName = "FirstName" },
+                results);
+
+            //added in case we add additional attributes beyond required
+            Validator.TryValidateProperty(this.LastName,
+                new ValidationContext(this, null, null) { MemberName = "LastName" },
+                results);
+
+            //added in case we add additional attributes beyond required
+            Validator.TryValidateProperty(this.EmailAddress,
+                new ValidationContext(this, null, null) { MemberName = "EmailAddress" },
+                results);
+
+            //added in case we add additional attributes beyond required
+            Validator.TryValidateProperty(this.PhoneNumber,
+                new ValidationContext(this, null, null) { MemberName = "PhoneNumber" },
+                results);
+
+            //added in case we add additional attributes beyond required
+            Validator.TryValidateProperty(this.Address1,
+                new ValidationContext(this, null, null) { MemberName = "Address1" },
+                results);
+
+            //added in case we add additional attributes beyond required
+            Validator.TryValidateProperty(this.Address2,
+                new ValidationContext(this, null, null) { MemberName = "Address2" },
+                results);
+
+            //added in case we add additional attributes beyond required
+            Validator.TryValidateProperty(this.City,
+                new ValidationContext(this, null, null) { MemberName = "City" },
+                results);
+
+            //added in case we add additional attributes beyond required
+            Validator.TryValidateProperty(this.State,
+                new ValidationContext(this, null, null) { MemberName = "State" },
+                results);
+
+            //added in case we add additional attributes beyond required
+            Validator.TryValidateProperty(this.Zipcode,
+                new ValidationContext(this, null, null) { MemberName = "Zipcode" },
+                results);
 
             return results;
         }
-
-        private IEnumerable<ValidationResult> ValidateRequiredFields()
-        {
-            var memberNameList = new List<string>();
-
-            //no need to validate Id, int32 will be initialized
-
-            if (string.IsNullOrEmpty(this.FirstName) || string.IsNullOrWhiteSpace(this.FirstName))
-            {
-                memberNameList.Add("FirstName");
-            }
-
-            if (string.IsNullOrEmpty(this.LastName) || string.IsNullOrWhiteSpace(this.LastName))
-            {
-                memberNameList.Add("LastName");
-            }
-
-            if (string.IsNullOrEmpty(this.EmailAddress) || string.IsNullOrWhiteSpace(this.EmailAddress))
-            {
-                memberNameList.Add("EmailAddress");
-            }
-
-            if (string.IsNullOrEmpty(this.PhoneNumber) || string.IsNullOrWhiteSpace(this.PhoneNumber))
-            {
-                memberNameList.Add("PhoneNumber");
-            }
-
-            if (string.IsNullOrEmpty(this.Address1) || string.IsNullOrWhiteSpace(this.Address1))
-            {
-                memberNameList.Add("Address1");
-            }
-
-            if (string.IsNullOrEmpty(this.City) || string.IsNullOrWhiteSpace(this.City))
-            {
-                memberNameList.Add("City");
-            }
-
-            if (string.IsNullOrEmpty(this.State) || string.IsNullOrWhiteSpace(this.State))
-            {
-                memberNameList.Add("State");
-            }
-
-            if (string.IsNullOrEmpty(this.Zipcode) || string.IsNullOrWhiteSpace(this.Zipcode))
-            {
-                memberNameList.Add("Zipcode");
-            }
-
-            yield return new ValidationResult("Required Field Missing", memberNameList);
-        }
+        
     }
 }
