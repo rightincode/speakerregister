@@ -36,9 +36,28 @@ namespace sregister_webapi.Controllers
 
         // POST api/speakers
         [HttpPost]
-        public Speaker Post([FromBody]Speaker speaker)
+        public IActionResult Post([FromBody]Speaker speaker)
         {
-            return _speakerRepository.SaveSpeaker(speaker);
+            if (speaker == null)
+            {
+                return BadRequest();
+            }
+            
+            var savedSpeaker = _speakerRepository.SaveSpeaker(speaker);
+
+            if (savedSpeaker.Id > 0)
+            {
+                return new OkObjectResult(savedSpeaker);
+            }
+            else
+            {
+                var actionResult = new ObjectResult(savedSpeaker)
+                {
+                    StatusCode = 500
+                };
+
+                return actionResult;
+            }
         }
 
         // PUT api/speakers/5

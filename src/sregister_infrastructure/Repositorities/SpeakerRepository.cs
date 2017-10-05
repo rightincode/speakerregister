@@ -6,6 +6,7 @@ using Dapper;
 using sregister_core.Interfaces;
 using sregister_core.Models;
 using Microsoft.Extensions.Options;
+using System.ComponentModel.DataAnnotations;
 
 namespace sregister_infrastructure.Repositorities
 {
@@ -52,25 +53,43 @@ namespace sregister_infrastructure.Repositorities
         public Speaker SaveSpeaker(Speaker currentSpeaker)
         {
             Speaker speaker;
+            var validationResults = new List<ValidationResult>();
 
-            using (
-               IDbConnection db = new SqlConnection(dbConnStr))
+            if (Validator.TryValidateObject(
+                currentSpeaker,
+                new ValidationContext(currentSpeaker, null, null),
+                validationResults,
+                false))
             {
-                var mParams = new DynamicParameters();
-                mParams.Add("Id", currentSpeaker.Id, DbType.Int32, ParameterDirection.Input);
-                mParams.Add("FirstName", currentSpeaker.FirstName, DbType.String, ParameterDirection.Input);
-                mParams.Add("LastName", currentSpeaker.LastName, DbType.String, ParameterDirection.Input);
-                mParams.Add("Address1", currentSpeaker.Address1, DbType.String, ParameterDirection.Input);
-                mParams.Add("Address2", currentSpeaker.Address2, DbType.String, ParameterDirection.Input);
-                mParams.Add("City", currentSpeaker.City, DbType.String, ParameterDirection.Input);
-                mParams.Add("State", currentSpeaker.State, DbType.String, ParameterDirection.Input);
-                mParams.Add("Zipcode", currentSpeaker.Zipcode, DbType.String, ParameterDirection.Input);
-                mParams.Add("EmailAddress", currentSpeaker.EmailAddress, DbType.String, ParameterDirection.Input);
-                mParams.Add("PhoneNumber", currentSpeaker.PhoneNumber, DbType.String, ParameterDirection.Input);
+                try
+                {
+                    using (IDbConnection db = new SqlConnection(dbConnStr))
+                    {
+                        var mParams = new DynamicParameters();
+                        mParams.Add("Id", currentSpeaker.Id, DbType.Int32, ParameterDirection.Input);
+                        mParams.Add("FirstName", currentSpeaker.FirstName, DbType.String, ParameterDirection.Input);
+                        mParams.Add("LastName", currentSpeaker.LastName, DbType.String, ParameterDirection.Input);
+                        mParams.Add("Address1", currentSpeaker.Address1, DbType.String, ParameterDirection.Input);
+                        mParams.Add("Address2", currentSpeaker.Address2, DbType.String, ParameterDirection.Input);
+                        mParams.Add("City", currentSpeaker.City, DbType.String, ParameterDirection.Input);
+                        mParams.Add("State", currentSpeaker.State, DbType.String, ParameterDirection.Input);
+                        mParams.Add("Zipcode", currentSpeaker.Zipcode, DbType.String, ParameterDirection.Input);
+                        mParams.Add("EmailAddress", currentSpeaker.EmailAddress, DbType.String, ParameterDirection.Input);
+                        mParams.Add("PhoneNumber", currentSpeaker.PhoneNumber, DbType.String, ParameterDirection.Input);
 
-                speaker = db.Query<Speaker>("SaveSpeaker", mParams, null, false, 60,
-                    CommandType.StoredProcedure).FirstOrDefault();
-
+                        speaker = db.Query<Speaker>("SaveSpeaker", mParams, null, false, 60,
+                            CommandType.StoredProcedure).FirstOrDefault();
+                    }
+                }
+                catch
+                {
+                    speaker = currentSpeaker;
+                }
+            }
+            else
+            {
+                speaker = currentSpeaker;
+                speaker.validationResults = validationResults;
             }
 
             return speaker;
