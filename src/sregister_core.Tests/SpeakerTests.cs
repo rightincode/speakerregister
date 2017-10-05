@@ -29,15 +29,13 @@ namespace sregister_core.Tests
 
             bool validateAllProperties = false;
 
-            var speakerValidationResults = new List<ValidationResult>();
-
-            bool isValid = Validator.TryValidateObject(
+            Validator.TryValidateObject(
                 testSpeaker,
                 new ValidationContext(testSpeaker, null, null),
-                speakerValidationResults,
+                testSpeaker.validationResults,
                 validateAllProperties);
 
-            Assert.AreEqual(1, speakerValidationResults.Where((result) => result.MemberNames.Contains("FirstName")).Count(), "First name should be missing.");
+            Assert.AreEqual(1, testSpeaker.validationResults.Where((result) => result.MemberNames.Contains("FirstName")).Count(), "First name should be missing.");
         }
 
         [TestMethod]
@@ -59,15 +57,13 @@ namespace sregister_core.Tests
 
             bool validateAllProperties = false;
 
-            var speakerValidationResults = new List<ValidationResult>();
-
-            bool isValid = Validator.TryValidateObject(
+            Validator.TryValidateObject(
                 testSpeaker,
                 new ValidationContext(testSpeaker, null, null),
-                speakerValidationResults,
+                testSpeaker.validationResults,
                 validateAllProperties);
 
-            Assert.AreEqual(1, speakerValidationResults.Where((result) => result.MemberNames.Contains("LastName")).Count(), "Last name should be missing.");
+            Assert.AreEqual(1, testSpeaker.validationResults.Where((result) => result.MemberNames.Contains("LastName")).Count(), "Last name should be missing.");
         }
 
         [TestMethod]
@@ -89,15 +85,13 @@ namespace sregister_core.Tests
 
             bool validateAllProperties = false;
 
-            var speakerValidationResults = new List<ValidationResult>();
-
-            bool isValid = Validator.TryValidateObject(
+            Validator.TryValidateObject(
                 testSpeaker,
                 new ValidationContext(testSpeaker, null, null),
-                speakerValidationResults,
+                testSpeaker.validationResults,
                 validateAllProperties);
 
-            Assert.AreEqual(1, speakerValidationResults.Where((result) => result.MemberNames.Contains("EmailAddress")).Count(), "Email address should be missing.");
+            Assert.AreEqual(1, testSpeaker.validationResults.Where((result) => result.MemberNames.Contains("EmailAddress")).Count(), "Email address should be missing.");
         }
 
         [TestMethod]
@@ -119,15 +113,13 @@ namespace sregister_core.Tests
 
             bool validateAllProperties = false;
 
-            var speakerValidationResults = new List<ValidationResult>();
-
-            bool isValid = Validator.TryValidateObject(
+            Validator.TryValidateObject(
                 testSpeaker,
                 new ValidationContext(testSpeaker, null, null),
-                speakerValidationResults,
+                testSpeaker.validationResults,
                 validateAllProperties);
 
-            Assert.AreEqual(1, speakerValidationResults.Where((result) => result.MemberNames.Contains("PhoneNumber")).Count(), "Phone number should be missing.");
+            Assert.AreEqual(1, testSpeaker.validationResults.Where((result) => result.MemberNames.Contains("PhoneNumber")).Count(), "Phone number should be missing.");
         }
 
         [TestMethod]
@@ -149,15 +141,13 @@ namespace sregister_core.Tests
 
             bool validateAllProperties = false;
 
-            var speakerValidationResults = new List<ValidationResult>();
-
-            bool isValid = Validator.TryValidateObject(
+            Validator.TryValidateObject(
                 testSpeaker,
                 new ValidationContext(testSpeaker, null, null),
-                speakerValidationResults,
+                testSpeaker.validationResults,
                 validateAllProperties);
 
-            Assert.AreEqual(1, speakerValidationResults.Where((result) => result.MemberNames.Contains("Address1")).Count(), "Address1 should be missing.");
+            Assert.AreEqual(1, testSpeaker.validationResults.Where((result) => result.MemberNames.Contains("Address1")).Count(), "Address1 should be missing.");
         }
 
         [TestMethod]
@@ -179,15 +169,13 @@ namespace sregister_core.Tests
 
             bool validateAllProperties = false;
 
-            var speakerValidationResults = new List<ValidationResult>();
-
-            bool isValid = Validator.TryValidateObject(
+            Validator.TryValidateObject(
                 testSpeaker,
                 new ValidationContext(testSpeaker, null, null),
-                speakerValidationResults,
+                testSpeaker.validationResults,
                 validateAllProperties);
 
-            Assert.AreEqual(1, speakerValidationResults.Where((result) => result.MemberNames.Contains("City")).Count(), "City should be missing.");
+            Assert.AreEqual(1, testSpeaker.validationResults.Where((result) => result.MemberNames.Contains("City")).Count(), "City should be missing.");
         }
 
         [TestMethod]
@@ -209,15 +197,13 @@ namespace sregister_core.Tests
 
             bool validateAllProperties = false;
 
-            var speakerValidationResults = new List<ValidationResult>();
-
-            bool isValid = Validator.TryValidateObject(
+            Validator.TryValidateObject(
                 testSpeaker,
                 new ValidationContext(testSpeaker, null, null),
-                speakerValidationResults,
+                testSpeaker.validationResults,
                 validateAllProperties);
 
-            Assert.AreEqual(1, speakerValidationResults.Where((result) => result.MemberNames.Contains("State")).Count(), "State should be missing.");
+            Assert.AreEqual(1, testSpeaker.validationResults.Where((result) => result.MemberNames.Contains("State")).Count(), "State should be missing.");
         }
 
         [TestMethod]
@@ -239,15 +225,13 @@ namespace sregister_core.Tests
 
             bool validateAllProperties = false;
 
-            var speakerValidationResults = new List<ValidationResult>();
-
-            bool isValid = Validator.TryValidateObject(
+            Validator.TryValidateObject(
                 testSpeaker,
                 new ValidationContext(testSpeaker, null, null),
-                speakerValidationResults,
+                testSpeaker.validationResults,
                 validateAllProperties);
 
-            Assert.AreEqual(1, speakerValidationResults.Where((result) => result.MemberNames.Contains("Zipcode")).Count(), "Zipcode should be missing.");
+            Assert.AreEqual(1, testSpeaker.validationResults.Where((result) => result.MemberNames.Contains("Zipcode")).Count(), "Zipcode should be missing.");
         }
     }
 }

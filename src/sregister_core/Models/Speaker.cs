@@ -36,6 +36,11 @@ namespace sregister_core.Models
 
         public List<ValidationResult> validationResults { get; set; }
 
+        public Speaker()
+        {
+            this.validationResults = new List<ValidationResult>();
+        }
+
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
             this.validationResults.Clear();
