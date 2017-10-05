@@ -6,6 +6,7 @@ using Dapper;
 using sregister_core.Interfaces;
 using sregister_core.Models;
 using Microsoft.Extensions.Options;
+using System.ComponentModel.DataAnnotations;
 
 namespace sregister_infrastructure.Repositorities
 {
@@ -52,24 +53,43 @@ namespace sregister_infrastructure.Repositorities
         {
             Conference conference;
 
-            using (
-               IDbConnection db = new SqlConnection(dbConnStr))
+            if (Validator.TryValidateObject(
+                currentConference,
+                new ValidationContext(currentConference, null, null),
+                currentConference.ValidationResults,
+                false))
             {
-                var mParams = new DynamicParameters();
-                mParams.Add("Id", currentConference.Id, DbType.Int32, ParameterDirection.Input);
-                mParams.Add("Name", currentConference.Name, DbType.String, ParameterDirection.Input);
-                mParams.Add("Location", currentConference.Location, DbType.String, ParameterDirection.Input);
-                mParams.Add("StartDate", currentConference.StartDate, DbType.DateTime, ParameterDirection.Input);
-                mParams.Add("EndDate", currentConference.EndDate, DbType.String, ParameterDirection.Input);
-                mParams.Add("City", currentConference.City, DbType.String, ParameterDirection.Input);
-                mParams.Add("State", currentConference.State, DbType.String, ParameterDirection.Input);
+                try
+                {
+                    using (IDbConnection db = new SqlConnection(dbConnStr))
+                    {
+                        var mParams = new DynamicParameters();
+                        mParams.Add("Id", currentConference.Id, DbType.Int32, ParameterDirection.Input);
+                        mParams.Add("Name", currentConference.Name, DbType.String, ParameterDirection.Input);
+                        mParams.Add("Location", currentConference.Location, DbType.String, ParameterDirection.Input);
+                        mParams.Add("StartDate", currentConference.StartDate, DbType.DateTime, ParameterDirection.Input);
+                        mParams.Add("EndDate", currentConference.EndDate, DbType.String, ParameterDirection.Input);
+                        mParams.Add("City", currentConference.City, DbType.String, ParameterDirection.Input);
+                        mParams.Add("State", currentConference.State, DbType.String, ParameterDirection.Input);
 
-                conference = db.Query<Conference>("SaveConference", mParams, null, false, 60,
-                    CommandType.StoredProcedure).FirstOrDefault();
+                        conference = db.Query<Conference>("SaveConference", mParams, null, false, 60,
+                            CommandType.StoredProcedure).FirstOrDefault();
 
+                    }
+
+                    return conference;
+                }
+                catch
+                {
+                    conference = currentConference;
+                }                
+            }
+            else
+            {
+                conference = currentConference;
             }
 
-            return conference;
+            return conference;                
         }
 
         public bool DeleteConference(int id)
