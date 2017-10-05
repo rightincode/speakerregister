@@ -64,9 +64,6 @@ namespace sregister_webapi.Controllers
         [HttpPut("{id}")]
         public IActionResult Put(int id, [FromBody]Speaker speaker)
         {
-            //speaker.Id = id;
-            //return _speakerRepository.SaveSpeaker(speaker);
-
             if (speaker == null)
             {
                 return BadRequest();

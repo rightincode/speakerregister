@@ -44,9 +44,19 @@ export class SpeakerService {
     }
 
     private onSaveSpeaker(currentSpeaker: Speaker): Observable<Speaker> {
-        return this.http.post(this.constants.speakersApi, JSON.stringify(currentSpeaker), this.httpHelperService.getAuthRequestOptionsArg('json'))
-            .map(this.extractSpeakerData)
-            .catch(this.handleSpeakerError);
+
+        if (currentSpeaker.id > 0) {
+            return this.http.put(this.constants.speakersApi + '/' + currentSpeaker.id,
+                JSON.stringify(currentSpeaker), this.httpHelperService.getAuthRequestOptionsArg('json'))
+                .map(this.extractSpeakerData)
+                .catch(this.handleSpeakerError);
+        }
+        else
+        {
+            return this.http.post(this.constants.speakersApi, JSON.stringify(currentSpeaker), this.httpHelperService.getAuthRequestOptionsArg('json'))
+                .map(this.extractSpeakerData)
+                .catch(this.handleSpeakerError);
+        }        
     }
 
     private extractSpeakerListData(res: Response): Speaker[] {
