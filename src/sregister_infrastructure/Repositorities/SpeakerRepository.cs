@@ -53,12 +53,11 @@ namespace sregister_infrastructure.Repositorities
         public Speaker SaveSpeaker(Speaker currentSpeaker)
         {
             Speaker speaker;
-            var validationResults = new List<ValidationResult>();
 
             if (Validator.TryValidateObject(
                 currentSpeaker,
                 new ValidationContext(currentSpeaker, null, null),
-                validationResults,
+                currentSpeaker.validationResults,
                 false))
             {
                 try
@@ -89,7 +88,6 @@ namespace sregister_infrastructure.Repositorities
             else
             {
                 speaker = currentSpeaker;
-                speaker.validationResults = validationResults;
             }
 
             return speaker;
