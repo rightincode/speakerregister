@@ -43,8 +43,6 @@ namespace sregister_core.Models
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
-            this.validationResults.Clear();
-
             //added in case we add additional attributes beyond required
             Validator.TryValidateProperty(this.Id,
                 new ValidationContext(this, null, null) { MemberName = "Id" },
