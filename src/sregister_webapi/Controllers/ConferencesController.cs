@@ -55,10 +55,29 @@ namespace sregister_webapi.Controllers
         }
 
         [HttpPut("{id}")]
-        public Conference Put(int id, [FromBody]Conference conference)
+        public IActionResult Put(int id, [FromBody]Conference conference)
         {
-           conference.Id = id;
-           return _conferenceRepository.SaveConference(conference);
+            if (conference == null)
+            {
+                return BadRequest();
+            }
+
+            conference.Id = id;
+            var savedConference = _conferenceRepository.SaveConference(conference);
+
+            if (savedConference.ValidationResults.Count == 0)
+            {
+                return new OkObjectResult(savedConference);
+            }
+            else
+            {
+                var actionResult = new ObjectResult(savedConference)
+                {
+                    StatusCode = 500
+                };
+
+                return actionResult;
+            }
         }
 
         [HttpDelete("{id}")]

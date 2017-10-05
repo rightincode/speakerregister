@@ -44,9 +44,19 @@ export class ConferenceService {
     }
 
     private onSaveConference(currentConference: Conference): Observable<Conference> {
-        return this.http.post(this.constants.conferenceApi, JSON.stringify(currentConference), this.httpHelperService.getAuthRequestOptionsArg('json'))
-            .map(this.extractConferenceData)
-            .catch(this.handleConferenceError);
+
+        if (currentConference.id > 0) {
+            return this.http.put(this.constants.conferenceApi + '/' + currentConference.id,
+                JSON.stringify(currentConference), this.httpHelperService.getAuthRequestOptionsArg('json'))
+                .map(this.extractConferenceData)
+                .catch(this.handleConferenceError);
+        }
+        else
+        {
+            return this.http.post(this.constants.conferenceApi, JSON.stringify(currentConference), this.httpHelperService.getAuthRequestOptionsArg('json'))
+                .map(this.extractConferenceData)
+                .catch(this.handleConferenceError);
+        }        
     }
 
     private extractConferenceListData(res: Response): Conference[] {
