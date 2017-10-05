@@ -45,7 +45,7 @@ namespace sregister_webapi.Controllers
             
             var savedSpeaker = _speakerRepository.SaveSpeaker(speaker);
 
-            if (savedSpeaker.Id > 0)
+            if (savedSpeaker.Id > 0 && savedSpeaker.validationResults.Count == 0)
             {
                 return new OkObjectResult(savedSpeaker);
             }
@@ -62,10 +62,32 @@ namespace sregister_webapi.Controllers
 
         // PUT api/speakers/5
         [HttpPut("{id}")]
-        public Speaker Put(int id, [FromBody]Speaker speaker)
+        public IActionResult Put(int id, [FromBody]Speaker speaker)
         {
+            //speaker.Id = id;
+            //return _speakerRepository.SaveSpeaker(speaker);
+
+            if (speaker == null)
+            {
+                return BadRequest();
+            }
+
             speaker.Id = id;
-            return _speakerRepository.SaveSpeaker(speaker);
+            var savedSpeaker = _speakerRepository.SaveSpeaker(speaker);
+
+            if (savedSpeaker.validationResults.Count == 0)
+            {
+                return new OkObjectResult(savedSpeaker);
+            }
+            else
+            {
+                var actionResult = new ObjectResult(savedSpeaker)
+                {
+                    StatusCode = 500
+                };
+
+                return actionResult;
+            }
         }
 
         // DELETE api/speakers/5
