@@ -57,7 +57,7 @@ namespace sregister_infrastructure.Repositorities
             if (Validator.TryValidateObject(
                 currentSpeaker,
                 new ValidationContext(currentSpeaker, null, null),
-                currentSpeaker.validationResults,
+                currentSpeaker.ValidationResults,
                 false))
             {
                 try

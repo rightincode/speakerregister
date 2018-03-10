@@ -45,7 +45,7 @@ namespace sregister_webapi.Controllers
             
             var savedSpeaker = _speakerRepository.SaveSpeaker(speaker);
 
-            if (savedSpeaker.Id > 0 && savedSpeaker.validationResults.Count == 0)
+            if (savedSpeaker.Id > 0 && savedSpeaker.ValidationResults.Count == 0)
             {
                 return new OkObjectResult(savedSpeaker);
             }
@@ -72,7 +72,7 @@ namespace sregister_webapi.Controllers
             speaker.Id = id;
             var savedSpeaker = _speakerRepository.SaveSpeaker(speaker);
 
-            if (savedSpeaker.validationResults.Count == 0)
+            if (savedSpeaker.ValidationResults.Count == 0)
             {
                 return new OkObjectResult(savedSpeaker);
             }
