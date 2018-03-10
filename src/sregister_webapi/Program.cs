@@ -12,14 +12,18 @@ namespace sregister_webapi
     {
         public static void Main(string[] args)
         {
+            CreateWebHostBuilder(args).Build().Run();
+        }
+
+        private static IWebHostBuilder CreateWebHostBuilder(string[] args)
+        {
             var host = new WebHostBuilder()
                 .UseKestrel()
                 .UseContentRoot(Directory.GetCurrentDirectory())
                 .UseIISIntegration()
-                .UseStartup<Startup>()
-                .Build();
+                .UseStartup<Startup>();
 
-            host.Run();
+            return host;
         }
     }
 }
