@@ -16,6 +16,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <!--<PackageReference Include="Microsoft.AspNetCore.App" Version="2.1.0-preview1-final" />-->
+    <PackageReference Include="Microsoft.AspNetCore" Version="2.1.0-preview1-final" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.1.0-preview1-final" />
     <PackageReference Include="Microsoft.AspNetCore.Routing" Version="2.1.0-preview1-final" />
     <PackageReference Include="Microsoft.AspNetCore.Server.IISIntegration" Version="2.1.0-preview1-final" />
@@ -27,9 +29,9 @@
     <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="2.1.0-preview1-final" />
     <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="2.1.0-preview1-final" />
     <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="2.1.0-preview1-final" />
-    <PackageReference Include="IdentityServer4.AccessTokenValidation" Version="1.2.1" />
     <PackageReference Include="Microsoft.AspNetCore.Cors" Version="2.1.0-preview1-final" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Cors" Version="2.1.0-preview1-final" />
+    <PackageReference Include="IdentityServer4.AccessTokenValidation" Version="1.2.1" />
     <PackageReference Include="Dapper" Version="1.50.2" />
   </ItemGroup>
 

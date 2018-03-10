@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Builder;
 
 namespace sregister_webapi
 {
@@ -14,16 +9,9 @@ namespace sregister_webapi
         {
             CreateWebHostBuilder(args).Build().Run();
         }
-
-        private static IWebHostBuilder CreateWebHostBuilder(string[] args)
-        {
-            var host = new WebHostBuilder()
-                .UseKestrel()
-                .UseContentRoot(Directory.GetCurrentDirectory())
-                .UseIISIntegration()
+               
+        private static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
+            WebHost.CreateDefaultBuilder(args)
                 .UseStartup<Startup>();
-
-            return host;
-        }
     }
 }
