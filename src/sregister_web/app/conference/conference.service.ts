@@ -95,9 +95,9 @@ export class ConferenceService {
             conference.id = body.id;
             conference.name = body.name;
             conference.location = body.location;
-            conference.startDate = new Date(body.startDate);
+            conference.startDate = body.startDate;
             conference.startDateStr = Moment.utc(conference.startDate).format('YYYY-MM-DD');
-            conference.endDate = new Date(body.endDate);
+            conference.endDate = body.endDate;
             conference.endDateStr = Moment.utc(conference.endDate).format('YYYY-MM-DD');
             conference.city = body.city;
             conference.state = body.state;
