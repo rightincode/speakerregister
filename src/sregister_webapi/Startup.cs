@@ -7,6 +7,7 @@ using Microsoft.Extensions.Logging;
 using sregister_core.Interfaces;
 using sregister_infrastructure.Repositorities;
 using sregister_core.Models;
+using System.Collections.Generic;
 
 namespace sregister_webapi
 {
@@ -47,13 +48,33 @@ namespace sregister_webapi
 
             app.UseCors(builder => builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
 
-            app.UseIdentityServerAuthentication(new IdentityServerAuthenticationOptions
+            //app.UseIdentityServerAuthentication(new IdentityServerAuthenticationOptions
+            //{
+            //    Authority = "http://localhost:9440",
+            //    AllowedScopes = { "sregisterAPI" },
+            //    RequireHttpsMetadata = false
+            //});
+
+            //app.UseIdentityServerAuthentication(new IdentityServer4.AccessTokenValidation.CombinedAuthenticationOptions
+            //{
+            //    ScopeValidationOptions = new ScopeValidationOptions
+            //    {
+            //        AuthenticationScheme = "http://localhost:9440",
+            //        AllowedScopes = new List<string>{ "sregisterAPI" }                    
+            //    }
+            //});
+
+            if (env.IsDevelopment())
             {
-                Authority = "http://localhost:9440",
-                AllowedScopes = { "sregisterAPI" },
-                RequireHttpsMetadata = false
-            });
-            
+                app.UseDeveloperExceptionPage();
+            }
+            else
+            {
+                app.UseHsts();
+            }
+
+            app.UseHttpsRedirection();
+
             app.UseMvc();
         }
     }

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using sregister_core.Interfaces;
 using sregister_core.Models;
@@ -8,6 +9,7 @@ using sregister_core.Models;
 namespace sregister_webapi.Controllers
 {
     [Route("api/conferences")]
+    //[Authorize]
     public class ConferencesController : Controller
     {
         private readonly IConferenceRepository _conferenceRepository;
