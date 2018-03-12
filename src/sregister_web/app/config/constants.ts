@@ -12,9 +12,9 @@ export class Constants {
 
     public clientCredentialTokenName: string = 'sregister_access_token';
 
-    public speakersApi: string = 'http://localhost:2353/api/speakers';
+    public speakersApi: string = 'https://localhost:44314/api/speakers';
 
-    public conferenceApi: string = 'http://localhost:2353/api/conferences';
+    public conferenceApi: string = 'https://localhost:44314/api/conferences';
 
     constructor() {
         this.clientCredentialTokenPostBody = new URLSearchParams();
