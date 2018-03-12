@@ -7,7 +7,7 @@ using Microsoft.Extensions.Logging;
 using sregister_core.Interfaces;
 using sregister_infrastructure.Repositorities;
 using sregister_core.Models;
-using System.Collections.Generic;
+using System;
 
 namespace sregister_webapi
 {
@@ -29,12 +29,28 @@ namespace sregister_webapi
         public void ConfigureServices(IServiceCollection services)
         {
             // Add framework services.
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddMvcCore()
+                .SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
+                .AddAuthorization()
+                .AddJsonFormatters()
+                .AddCors();
 
-            services.AddCors();
+            services.AddHsts(options => {
+                options.MaxAge = TimeSpan.FromDays(90);
+                options.IncludeSubDomains = false;
+                options.Preload = false;
+            });
+
+            services.AddAuthentication("Bearer").AddIdentityServerAuthentication(options => {
+                options.Authority = "http://localhost:9440";
+                options.RequireHttpsMetadata = false;
+                options.ApiName = "sregisterAPI";
+                options.LegacyAudienceValidation = true;    //temporary until token service is updated
+            });
+
             services.AddOptions();
             services.Configure<SpeakerRegisterOptions>(Configuration.GetSection("Options"));
-
+            
             // adding custom services
             services.AddTransient<ISpeakerRepository, SpeakerRepository>();
             services.AddTransient<IConferenceRepository, ConferenceRepository>();
@@ -46,23 +62,7 @@ namespace sregister_webapi
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
 
-            app.UseCors(builder => builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
-
-            //app.UseIdentityServerAuthentication(new IdentityServerAuthenticationOptions
-            //{
-            //    Authority = "http://localhost:9440",
-            //    AllowedScopes = { "sregisterAPI" },
-            //    RequireHttpsMetadata = false
-            //});
-
-            //app.UseIdentityServerAuthentication(new IdentityServer4.AccessTokenValidation.CombinedAuthenticationOptions
-            //{
-            //    ScopeValidationOptions = new ScopeValidationOptions
-            //    {
-            //        AuthenticationScheme = "http://localhost:9440",
-            //        AllowedScopes = new List<string>{ "sregisterAPI" }                    
-            //    }
-            //});
+            app.UseCors(builder => builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());                   
 
             if (env.IsDevelopment())
             {
@@ -74,7 +74,7 @@ namespace sregister_webapi
             }
 
             app.UseHttpsRedirection();
-
+            app.UseAuthentication();
             app.UseMvc();
         }
     }

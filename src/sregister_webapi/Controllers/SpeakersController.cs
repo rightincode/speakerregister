@@ -10,7 +10,7 @@ using sregister_core.Models;
 namespace sregister_webapi.Controllers
 {
     [Route("api/speakers")]
-    //[Authorize]
+    [Authorize]
     public class SpeakersController : Controller
     {
         private readonly ISpeakerRepository _speakerRepository;

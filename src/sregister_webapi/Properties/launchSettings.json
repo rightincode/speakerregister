@@ -12,8 +12,8 @@
       "commandName": "IISExpress",
       "launchUrl": "api/values",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development",
-        "ASPNETCORE_HTTPS_PORT": "44314"
+        "ASPNETCORE_HTTPS_PORT": "44314",
+        "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
     "sregister_webapi": {

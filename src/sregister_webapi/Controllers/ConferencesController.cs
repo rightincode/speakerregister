@@ -9,7 +9,7 @@ using sregister_core.Models;
 namespace sregister_webapi.Controllers
 {
     [Route("api/conferences")]
-    //[Authorize]
+    [Authorize]
     public class ConferencesController : Controller
     {
         private readonly IConferenceRepository _conferenceRepository;
