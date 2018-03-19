@@ -25,15 +25,19 @@ namespace sregister_sec
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
             loggerFactory.AddConsole();
+            app.UseCors(builder => builder.AllowAnyOrigin());
 
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
+            else
+            {
+                app.UseHsts();
+            }
 
-            app.UseCors(builder => builder.AllowAnyOrigin());
+            app.UseHttpsRedirection();            
             app.UseIdentityServer();
-
         }
     }
 

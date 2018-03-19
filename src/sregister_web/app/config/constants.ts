@@ -4,7 +4,7 @@ import { Headers, URLSearchParams } from '@angular/http';
 @Injectable()
 export class Constants {
 
-    public tokenEndPoint: string = 'http://localhost:9440/connect/token';
+    public tokenEndPoint: string = 'https://localhost:44367/connect/token';
 
     public clientCredentialTokenPostBody: URLSearchParams;
     
