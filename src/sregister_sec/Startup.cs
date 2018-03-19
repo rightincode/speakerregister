@@ -1,11 +1,6 @@
 ﻿using System.Collections.Generic;
-using System.Security.Claims;
-using IdentityModel;
-using IdentityServer4.Configuration;
 using IdentityServer4.Models;
-using IdentityServer4.Services.InMemory;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Cors.Infrastructure;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -21,11 +16,9 @@ namespace sregister_sec
             services.AddCors();
 
             services.AddIdentityServer()
-                .AddInMemoryStores()
-                .AddInMemoryClients(Clients.Get())
-                .AddInMemoryScopes(Scopes.Get())
-                .AddInMemoryUsers(Users.Get())
-                .SetTemporarySigningCredential();
+                .AddDeveloperSigningCredential()
+                .AddInMemoryApiResources(Config.GetApiResources())
+                .AddInMemoryClients(Clients.Get());
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -56,49 +49,6 @@ namespace sregister_sec
                     ClientSecrets = new List<Secret> {
                         new Secret("speakerRegisterClientPassword".Sha256())},
                     AllowedScopes = new List<string> { "sregisterAPI" }
-                }
-            };
-        }
-    }
-
-    internal class Scopes
-    {
-        public static IEnumerable<Scope> Get()
-        {
-            return new List<Scope> {
-                StandardScopes.OpenId,
-                StandardScopes.Profile,
-                StandardScopes.Email,
-                StandardScopes.Roles,
-                StandardScopes.OfflineAccess,
-                new Scope
-                {
-                    Name = "sregisterAPI",
-                    DisplayName = "Speaker Register API",
-                    Description = "Speaker Register API scope",
-                    Type = ScopeType.Resource,
-                    ScopeSecrets =  new List<Secret> {
-                        new Secret("sregisterAPISecret".Sha256())
-    
-                    }
-                }
-            };
-        }
-    }
-
-    internal class Users
-    {
-        public static List<InMemoryUser> Get()
-        {
-            return new List<InMemoryUser> {
-                new InMemoryUser {
-                    Subject = "5BE86359-073C-434B-AD2D-A3932222DABE",
-                    Username = "richard",
-                    Password = "password",
-                    Claims = new List<Claim> {
-                        new Claim(JwtClaimTypes.Email, "rtaylor@rightincode.com"),
-                        new Claim(JwtClaimTypes.Role, "SuperMan")
-                    }
                 }
             };
         }
