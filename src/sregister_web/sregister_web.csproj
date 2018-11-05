@@ -12,14 +12,154 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\app\admin\admin.component.ts" />
+    <Content Remove="wwwroot\app\admin\admin.module.ts" />
+    <Content Remove="wwwroot\app\admin\admin.routing.ts" />
+    <Content Remove="wwwroot\app\admin\admindashboard.component.ts" />
+    <Content Remove="wwwroot\app\animations.ts" />
+    <Content Remove="wwwroot\app\app.component.ts" />
+    <Content Remove="wwwroot\app\app.module.ts" />
+    <Content Remove="wwwroot\app\app.routing.ts" />
+    <Content Remove="wwwroot\app\conference\conference.component.ts" />
+    <Content Remove="wwwroot\app\conference\conference.module.ts" />
+    <Content Remove="wwwroot\app\conference\conference.routing.ts" />
+    <Content Remove="wwwroot\app\conference\conference.service.ts" />
+    <Content Remove="wwwroot\app\conference\conference.ts" />
+    <Content Remove="wwwroot\app\conference\conferencedetail.component.ts" />
+    <Content Remove="wwwroot\app\conference\conferencelist.component.ts" />
+    <Content Remove="wwwroot\app\config\constants.ts" />
+    <Content Remove="wwwroot\app\contactus-component.ts" />
+    <Content Remove="wwwroot\app\home\speakerregisterhome.component.ts" />
+    <Content Remove="wwwroot\app\main.ts" />
+    <Content Remove="wwwroot\app\pagenotfound.component.ts" />
+    <Content Remove="wwwroot\app\rxjs-operators.ts" />
+    <Content Remove="wwwroot\app\services\auth\authguard.service.ts" />
+    <Content Remove="wwwroot\app\services\httphelper\httphelper.service.ts" />
+    <Content Remove="wwwroot\app\services\token\token.service.ts" />
+    <Content Remove="wwwroot\app\services\token\token.ts" />
+    <Content Remove="wwwroot\app\speaker\speaker.module.ts" />
+    <Content Remove="wwwroot\app\speaker\speaker.routing.ts" />
+    <Content Remove="wwwroot\app\speaker\speaker.service.ts" />
+    <Content Remove="wwwroot\app\speaker\speaker.ts" />
+    <Content Remove="wwwroot\app\speaker\speakerdetail.component.ts" />
+    <Content Remove="wwwroot\app\speaker\speakerlist.component.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="app\admin\admin.component.ts" />
+    <None Remove="app\admin\admin.module.ts" />
+    <None Remove="app\admin\admin.routing.ts" />
+    <None Remove="app\admin\admindashboard.component.ts" />
+    <None Remove="app\animations.ts" />
+    <None Remove="app\app.component.ts" />
+    <None Remove="app\app.module.ts" />
+    <None Remove="app\app.routing.ts" />
+    <None Remove="app\conference\conference.component.ts" />
+    <None Remove="app\conference\conference.module.ts" />
+    <None Remove="app\conference\conference.routing.ts" />
+    <None Remove="app\conference\conference.service.ts" />
+    <None Remove="app\conference\conference.ts" />
+    <None Remove="app\conference\conferencedetail.component.ts" />
+    <None Remove="app\conference\conferencelist.component.ts" />
+    <None Remove="app\config\constants.ts" />
+    <None Remove="app\contactus-component.ts" />
+    <None Remove="app\home\speakerregisterhome.component.ts" />
+    <None Remove="app\main.ts" />
+    <None Remove="app\pagenotfound.component.ts" />
+    <None Remove="app\rxjs-operators.ts" />
+    <None Remove="app\services\auth\authguard.service.ts" />
+    <None Remove="app\services\httphelper\httphelper.service.ts" />
+    <None Remove="app\services\token\token.service.ts" />
+    <None Remove="app\services\token\token.ts" />
+    <None Remove="app\speaker\speaker.module.ts" />
+    <None Remove="app\speaker\speaker.routing.ts" />
+    <None Remove="app\speaker\speaker.service.ts" />
+    <None Remove="app\speaker\speaker.ts" />
+    <None Remove="app\speaker\speakerdetail.component.ts" />
+    <None Remove="app\speaker\speakerlist.component.ts" />
+    <None Remove="typings\globals\core-js\index.d.ts" />
+    <None Remove="typings\globals\jasmine\index.d.ts" />
+    <None Remove="typings\globals\node\index.d.ts" />
+    <None Remove="typings\index.d.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Update="wwwroot\**\*">
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </None>
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.1.0-preview1-final" />
-    <PackageReference Include="Microsoft.Packaging.Tools.Trimming" Version="1.1.0-preview1-25818-01" />
+    <PackageReference Include="Microsoft.AspNetCore.All" Version="2.1.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TypeScriptCompile Include="app\admin\admin.component.ts" />
+    <TypeScriptCompile Include="app\admin\admin.module.ts" />
+    <TypeScriptCompile Include="app\admin\admin.routing.ts" />
+    <TypeScriptCompile Include="app\admin\admindashboard.component.ts" />
+    <TypeScriptCompile Include="app\animations.ts" />
+    <TypeScriptCompile Include="app\app.component.ts" />
+    <TypeScriptCompile Include="app\app.module.ts" />
+    <TypeScriptCompile Include="app\app.routing.ts" />
+    <TypeScriptCompile Include="app\conference\conference.component.ts" />
+    <TypeScriptCompile Include="app\conference\conference.module.ts" />
+    <TypeScriptCompile Include="app\conference\conference.routing.ts" />
+    <TypeScriptCompile Include="app\conference\conference.service.ts" />
+    <TypeScriptCompile Include="app\conference\conference.ts" />
+    <TypeScriptCompile Include="app\conference\conferencedetail.component.ts" />
+    <TypeScriptCompile Include="app\conference\conferencelist.component.ts" />
+    <TypeScriptCompile Include="app\config\constants.ts" />
+    <TypeScriptCompile Include="app\contactus-component.ts" />
+    <TypeScriptCompile Include="app\home\speakerregisterhome.component.ts" />
+    <TypeScriptCompile Include="app\main.ts" />
+    <TypeScriptCompile Include="app\pagenotfound.component.ts" />
+    <TypeScriptCompile Include="app\rxjs-operators.ts" />
+    <TypeScriptCompile Include="app\services\auth\authguard.service.ts" />
+    <TypeScriptCompile Include="app\services\httphelper\httphelper.service.ts" />
+    <TypeScriptCompile Include="app\services\token\token.service.ts" />
+    <TypeScriptCompile Include="app\services\token\token.ts" />
+    <TypeScriptCompile Include="app\speaker\speaker.module.ts" />
+    <TypeScriptCompile Include="app\speaker\speaker.routing.ts" />
+    <TypeScriptCompile Include="app\speaker\speaker.service.ts" />
+    <TypeScriptCompile Include="app\speaker\speaker.ts" />
+    <TypeScriptCompile Include="app\speaker\speakerdetail.component.ts" />
+    <TypeScriptCompile Include="app\speaker\speakerlist.component.ts" />
+    <TypeScriptCompile Include="typings\globals\core-js\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\jasmine\index.d.ts" />
+    <TypeScriptCompile Include="typings\globals\node\index.d.ts" />
+    <TypeScriptCompile Include="typings\index.d.ts" />
+    <TypeScriptCompile Include="wwwroot\app\admin\admin.component.ts" />
+    <TypeScriptCompile Include="wwwroot\app\admin\admin.module.ts" />
+    <TypeScriptCompile Include="wwwroot\app\admin\admin.routing.ts" />
+    <TypeScriptCompile Include="wwwroot\app\admin\admindashboard.component.ts" />
+    <TypeScriptCompile Include="wwwroot\app\animations.ts" />
+    <TypeScriptCompile Include="wwwroot\app\app.component.ts" />
+    <TypeScriptCompile Include="wwwroot\app\app.module.ts" />
+    <TypeScriptCompile Include="wwwroot\app\app.routing.ts" />
+    <TypeScriptCompile Include="wwwroot\app\conference\conference.component.ts" />
+    <TypeScriptCompile Include="wwwroot\app\conference\conference.module.ts" />
+    <TypeScriptCompile Include="wwwroot\app\conference\conference.routing.ts" />
+    <TypeScriptCompile Include="wwwroot\app\conference\conference.service.ts" />
+    <TypeScriptCompile Include="wwwroot\app\conference\conference.ts" />
+    <TypeScriptCompile Include="wwwroot\app\conference\conferencedetail.component.ts" />
+    <TypeScriptCompile Include="wwwroot\app\conference\conferencelist.component.ts" />
+    <TypeScriptCompile Include="wwwroot\app\config\constants.ts" />
+    <TypeScriptCompile Include="wwwroot\app\contactus-component.ts" />
+    <TypeScriptCompile Include="wwwroot\app\home\speakerregisterhome.component.ts" />
+    <TypeScriptCompile Include="wwwroot\app\main.ts" />
+    <TypeScriptCompile Include="wwwroot\app\pagenotfound.component.ts" />
+    <TypeScriptCompile Include="wwwroot\app\rxjs-operators.ts" />
+    <TypeScriptCompile Include="wwwroot\app\services\auth\authguard.service.ts" />
+    <TypeScriptCompile Include="wwwroot\app\services\httphelper\httphelper.service.ts" />
+    <TypeScriptCompile Include="wwwroot\app\services\token\token.service.ts" />
+    <TypeScriptCompile Include="wwwroot\app\services\token\token.ts" />
+    <TypeScriptCompile Include="wwwroot\app\speaker\speaker.module.ts" />
+    <TypeScriptCompile Include="wwwroot\app\speaker\speaker.routing.ts" />
+    <TypeScriptCompile Include="wwwroot\app\speaker\speaker.service.ts" />
+    <TypeScriptCompile Include="wwwroot\app\speaker\speaker.ts" />
+    <TypeScriptCompile Include="wwwroot\app\speaker\speakerdetail.component.ts" />
+    <TypeScriptCompile Include="wwwroot\app\speaker\speakerlist.component.ts" />
   </ItemGroup>
 
 </Project>
