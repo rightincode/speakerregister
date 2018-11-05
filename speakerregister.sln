@@ -19,7 +19,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "sregister_infrastructure", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "sregister_core.Tests", "src\sregister_core.Tests\sregister_core.Tests.csproj", "{F8532ABC-DCF4-44B7-9CDF-2CC3B1C0E6B1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "sregister_web", "src\sregister_web2\sregister_web.csproj", "{2E23C4DA-CEFC-42FE-8295-13D35DE6C7F6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "sregister_web", "src\sregister_web\sregister_web.csproj", "{2E23C4DA-CEFC-42FE-8295-13D35DE6C7F6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
