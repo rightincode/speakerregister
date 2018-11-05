@@ -7,7 +7,7 @@
     <OutputType>Exe</OutputType>
     <PackageId>sregister_web</PackageId>
     <PackageTargetFallback>$(PackageTargetFallback);dotnet5.6;portable-net45+win8</PackageTargetFallback>
-    <TypeScriptToolsVersion>2.6</TypeScriptToolsVersion>
+    <TypeScriptToolsVersion>3.1</TypeScriptToolsVersion>
     <TrimUnusedDependencies>true</TrimUnusedDependencies>
   </PropertyGroup>
 

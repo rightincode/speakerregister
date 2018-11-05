@@ -1,0 +1,141 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
+    <TypeScriptToolsVersion>Latest</TypeScriptToolsVersion>
+    <IsPackable>false</IsPackable>
+    <SpaRoot>ClientApp\</SpaRoot>
+    <DefaultItemExcludes>$(DefaultItemExcludes);$(SpaRoot)node_modules\**</DefaultItemExcludes>
+
+    <!-- Set this to true if you enable server-side prerendering -->
+    <BuildServerSideRenderer>false</BuildServerSideRenderer>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="2.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Don't publish the SPA source files, but do show them in the project files list -->
+    <Content Remove="$(SpaRoot)**" />
+    <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="ClientApp\src\app\admin\admin.component.ts" />
+    <None Remove="ClientApp\src\app\admin\admin.module.ts" />
+    <None Remove="ClientApp\src\app\admin\admin.routing.ts" />
+    <None Remove="ClientApp\src\app\admin\admindashboard.component.ts" />
+    <None Remove="ClientApp\src\app\animations.ts" />
+    <None Remove="ClientApp\src\app\app.component.html" />
+    <None Remove="ClientApp\src\app\app.component.ts" />
+    <None Remove="ClientApp\src\app\app.module.ts" />
+    <None Remove="ClientApp\src\app\app.routing.ts" />
+    <None Remove="ClientApp\src\app\conference\conference.component.ts" />
+    <None Remove="ClientApp\src\app\conference\conference.module.ts" />
+    <None Remove="ClientApp\src\app\conference\conference.routing.ts" />
+    <None Remove="ClientApp\src\app\conference\conference.service.ts" />
+    <None Remove="ClientApp\src\app\conference\conference.ts" />
+    <None Remove="ClientApp\src\app\conference\conferencedetail.component.ts" />
+    <None Remove="ClientApp\src\app\conference\conferencelist.component.ts" />
+    <None Remove="ClientApp\src\app\config\constants.ts" />
+    <None Remove="ClientApp\src\app\contactus-component.ts" />
+    <None Remove="ClientApp\src\app\home\speakerregisterhome.component.ts" />
+    <None Remove="ClientApp\src\app\main.ts" />
+    <None Remove="ClientApp\src\app\pagenotfound.component.ts" />
+    <None Remove="ClientApp\src\app\rxjs-operators.ts" />
+    <None Remove="ClientApp\src\app\services\auth\authguard.service.ts" />
+    <None Remove="ClientApp\src\app\services\httphelper\httphelper.service.ts" />
+    <None Remove="ClientApp\src\app\services\token\token.service.ts" />
+    <None Remove="ClientApp\src\app\services\token\token.ts" />
+    <None Remove="ClientApp\src\app\speaker\speaker.module.ts" />
+    <None Remove="ClientApp\src\app\speaker\speaker.routing.ts" />
+    <None Remove="ClientApp\src\app\speaker\speaker.service.ts" />
+    <None Remove="ClientApp\src\app\speaker\speaker.ts" />
+    <None Remove="ClientApp\src\app\speaker\speakerdetail.component.ts" />
+    <None Remove="ClientApp\src\app\speaker\speakerlist.component.ts" />
+    <None Remove="ClientApp\src\app\testdata\conferences.json" />
+    <None Remove="ClientApp\src\app\testdata\speakers.json" />
+    <None Remove="ClientApp\src\assets\graphics\register-icon.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="ClientApp\src\app\app.component.html">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="ClientApp\src\app\testdata\conferences.json">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="ClientApp\src\app\testdata\speakers.json">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Include="ClientApp\src\assets\graphics\register-icon.png">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\src\app\admin\admin.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\admin\admin.module.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\admin\admin.routing.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\admin\admindashboard.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\animations.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\app.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\app.module.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\app.routing.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\conference\conference.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\conference\conference.module.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\conference\conference.routing.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\conference\conference.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\conference\conference.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\conference\conferencedetail.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\conference\conferencelist.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\config\constants.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\contactus-component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\home\speakerregisterhome.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\main.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\pagenotfound.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\rxjs-operators.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\services\auth\authguard.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\services\httphelper\httphelper.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\services\token\token.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\services\token\token.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\speaker\speaker.module.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\speaker\speaker.routing.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\speaker\speaker.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\speaker\speaker.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\speaker\speakerdetail.component.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\speaker\speakerlist.component.ts" />
+  </ItemGroup>
+
+  <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
+    <!-- Ensure Node.js is installed -->
+    <Exec Command="node --version" ContinueOnError="true">
+      <Output TaskParameter="ExitCode" PropertyName="ErrorCode" />
+    </Exec>
+    <Error Condition="'$(ErrorCode)' != '0'" Text="Node.js is required to build and run this project. To continue, please install Node.js from https://nodejs.org/, and then restart your command prompt or IDE." />
+    <Message Importance="high" Text="Restoring dependencies using 'npm'. This may take several minutes..." />
+    <Exec WorkingDirectory="$(SpaRoot)" Command="npm install" />
+  </Target>
+
+  <Target Name="PublishRunWebpack" AfterTargets="ComputeFilesToPublish">
+    <!-- As part of publishing, ensure the JS resources are freshly built in production mode -->
+    <Exec WorkingDirectory="$(SpaRoot)" Command="npm install" />
+    <Exec WorkingDirectory="$(SpaRoot)" Command="npm run build -- --prod" />
+    <Exec WorkingDirectory="$(SpaRoot)" Command="npm run build:ssr -- --prod" Condition=" '$(BuildServerSideRenderer)' == 'true' " />
+
+    <!-- Include the newly-built files in the publish output -->
+    <ItemGroup>
+      <DistFiles Include="$(SpaRoot)dist\**; $(SpaRoot)dist-server\**" />
+      <DistFiles Include="$(SpaRoot)node_modules\**" Condition="'$(BuildServerSideRenderer)' == 'true'" />
+      <ResolvedFileToPublish Include="@(DistFiles->'%(FullPath)')" Exclude="@(ResolvedFileToPublish)">
+        <RelativePath>%(DistFiles.Identity)</RelativePath>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </ResolvedFileToPublish>
+    </ItemGroup>
+  </Target>
+
+</Project>
